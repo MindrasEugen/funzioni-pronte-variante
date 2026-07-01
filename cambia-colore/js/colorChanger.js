@@ -17,13 +17,13 @@ function cambiaColore(elemento) {
 }
 
 // Applica l'effetto al body e al titolo principale ogni secondo
-setInterval(() => {
-    cambiaColore(document.body);
-}, 1000);
+// setInterval(() => {
+//     cambiaColore(document.body);
+// }, 1000);
 
-setInterval(() => {
-    cambiaColore(document.querySelector("h1"));
-}, 1000);
+// setInterval(() => {
+//     cambiaColore(document.querySelector("h1"));
+// }, 1000);
 
 
 /**
@@ -65,5 +65,5 @@ function cambiaTesto(elemento) {
 }
 
 
-cambiaSfondo(document.body);
-cambiaTesto(document.body);
+// cambiaSfondo(document.body);
+// cambiaTesto(document.body);
