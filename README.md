@@ -116,6 +116,42 @@ Copia il file JavaScript dalla cartella `js/` della funzione desiderata nel tuo 
 <script src="path/to/colorChanger.js"></script>
 ```
 
+### 🌐 Usare la libreria completa via CDN
+
+Puoi importare tutte le funzioni direttamente da CDN con **ES Modules**:
+
+```javascript
+import * as utils from "https://cdn.jsdelivr.net/gh/MindrasEugen/funzioni-pronte-al-uso/index.js";
+```
+
+**⚠️ Attenzione:** Per usare i moduli ES, il tuo file HTML **deve** dichiarare lo script con `type="module"`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Il mio progetto</title>
+</head>
+<body>
+    <!-- Il tuo HTML -->
+    
+    <script type="module">
+        import * as utils from "https://cdn.jsdelivr.net/gh/MindrasEugen/funzioni-pronte-al-uso/index.js";
+        
+        // Ora puoi usare tutte le funzioni
+        utils.cambiaColore(document.body);
+        const numero = utils.numeroCasuale(1, 100);
+        const elemento = utils.crea("div", "box", "Ciao");
+    </script>
+</body>
+</html>
+```
+
+> **❗ Importante:** 
+> - **Senza `type="module"` lo script NON funzionerà**
+> - I moduli ES non funzionano in tutti i browser vecchi
+> - In ambienti che non supportano ES Modules (come alcuni bundler vecchi), usa l'approccio classico con `<script src="...">`
+
 ## 📋 Panoramica Funzioni
 
 ### 🎨 Manipolazione DOM e Stili
