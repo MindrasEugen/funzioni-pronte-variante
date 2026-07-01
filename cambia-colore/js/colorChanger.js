@@ -25,6 +25,7 @@ setInterval(() => {
     cambiaColore(document.querySelector("h1"));
 }, 1000);
 
+
 /**
  * Note di implementazione:
  * - Math.random() genera un numero tra 0 (inclusivo) e 1 (esclusivo)
