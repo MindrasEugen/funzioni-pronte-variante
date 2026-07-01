@@ -35,6 +35,8 @@ setInterval(() => {
 
 
 
+//------------------------------VARIANTE 2-------------------------//
+
 
 // la seguente variante ci permete di operare più facilmente sia sul testo che sul background
 // si tratta semplicemente di una combinazione di tre funzioni diverse
