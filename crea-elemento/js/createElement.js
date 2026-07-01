@@ -18,11 +18,11 @@ function crea(tag, classe = "", testo = "") {
 }
 
 // Demo: ogni secondo crea un nuovo div con classe e testo
-let counter = 1;
-setInterval(() => {
-    const box = crea("div", "box", `Elemento ${counter++}`);
-    document.body.appendChild(box);
-}, 2000);
+// let counter = 1;
+// setInterval(() => {
+//     const box = crea("div", "box", `Elemento ${counter++}`);
+//     document.body.appendChild(box);
+// }, 2000);
 
 /**
  * Dettagli implementativi:
