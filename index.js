@@ -14,6 +14,4 @@ Questo serve per poter usare tutte le funzioni del progetto con un solo import:
 
 import * as utils from "./index.js";
 utils.cambiaColore(document.body);
-
-
- */
+*/
