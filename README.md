@@ -7,6 +7,7 @@
 ```
 funzioni salvate/
 ├── README.md                  # Questo file - panoramica generale
+├── index.js                 # Entry point - esporta tutte le funzioni
 ├── cambia-colore/
 │   ├── js/
 │   │   └── colorChanger.js   # Cambia colore sfondo elementi
@@ -55,9 +56,201 @@ funzioni salvate/
 │   ├── index.html            # Demo interattiva
 │   └── README.md             # Documentazione dettagliata
 │
-└── fade-in/
+├── fade-in/
+│   ├── js/
+│   │   └── animations.js      # Effetto fade-in su elementi
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── calcola-percentuale/
+│   ├── js/
+│   │   └── calcolaPercentuale.js  # Calcola la percentuale di un valore
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── arrotonda-numero/
+│   ├── js/
+│   │   └── arrotondaNumero.js  # Arrotonda un numero a N decimali
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── calcola-media/
+│   ├── js/
+│   │   └── calcolaMedia.js  # Calcola la media di un array di numeri
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── calcola-somma/
+│   ├── js/
+│   │   └── calcolaSomma.js  # Calcola la somma di un array di numeri
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── trova-massimo/
+│   ├── js/
+│   │   └── trovaMassimo.js  # Trova il valore massimo in un array
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── trova-minimo/
+│   ├── js/
+│   │   └── trovaMinimo.js  # Trova il valore minimo in un array
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── verifica-numero-primo/
+│   ├── js/
+│   │   └── verificaNumeroPrimo.js  # Verifica se un numero è primo
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── calcola-ipotenuza/
+│   ├── js/
+│   │   └── calcolaIpotenuza.js  # Calcola l'ipotenusa (teorema di Pitagora)
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── calcola-fattoriale/
+│   ├── js/
+│   │   └── calcolaFattoriale.js  # Calcola il fattoriale di un numero
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── calcola-potenza/
+│   ├── js/
+│   │   └── calcolaPotenza.js  # Calcola la potenza (base^esponente)
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── calcola-radice/
+│   ├── js/
+│   │   └── calcolaRadice.js  # Calcola la radice (quadrata, cubica, ecc.)
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── verifica-in-range/
+│   ├── js/
+│   │   └── verificaInRange.js  # Verifica se un numero è in un range
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── filtra-array/
+│   ├── js/
+│   │   └── filtraArray.js  # Filtra un array in base a una condizione
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── ordina-array/
+│   ├── js/
+│   │   └── ordinaArray.js  # Ordina un array di numeri o oggetti
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── inverti-stringa/
+│   ├── js/
+│   │   └── invertiStringa.js  # Inverte una stringa
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── rimuovi-duplicati/
+│   ├── js/
+│   │   └── rimuoviDuplicati.js  # Rimuove duplicati da un array
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── mescola-array/
+│   ├── js/
+│   │   └── mescolaArray.js  # Mescola casualmente un array
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── verifica-tipo/
+│   ├── js/
+│   │   └── verificaTipo.js  # Verifica il tipo di una variabile
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── genera-id/
+│   ├── js/
+│   │   └── generaId.js  # Genera un ID casuale alfanumerico
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── conteggio-caratteri/
+│   ├── js/
+│   │   └── conteggioCaratteri.js  # Conta i caratteri in una stringa
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── capitalizza-parola/
+│   ├── js/
+│   │   └── capitalizzaParola.js  # Capitalizza la prima lettera
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── taglia-testuale/
+│   ├── js/
+│   │   └── tagliaTestuale.js  # Taglia una stringa a N caratteri
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+├── contiene-testuale/
+│   ├── js/
+│   │   └── contieneTestuale.js  # Verifica se una stringa contiene un sottotesto
+│   ├── css/
+│   │   └── styles.css        # Stili per la demo
+│   ├── index.html            # Demo interattiva
+│   └── README.md             # Documentazione dettagliata
+│
+└── sostituisci-testuale/
     ├── js/
-    │   └── animations.js      # Effetto fade-in su elementi
+    │   └── sostituisciTestuale.js  # Sostituisce un sottotesto in una stringa
     ├── css/
     │   └── styles.css        # Stili per la demo
     ├── index.html            # Demo interattiva
@@ -75,12 +268,87 @@ funzioni salvate/
 
 ---
 
+### 🧮 Operazioni Matematiche
+- **📊 [`calcolaPercentuale(valore, percentuale)`](calcola-percentuale/README.md)** — Calcola la percentuale di un valore
+  [👉 Demo](calcola-percentuale/index.html) · [📖 Doc](calcola-percentuale/README.md)
+
+- **🔢 [`arrotondaNumero(numero, decimali)`](arrotonda-numero/README.md)** — Arrotonda un numero a N decimali
+  [👉 Demo](arrotonda-numero/index.html) · [📖 Doc](arrotonda-numero/README.md)
+
+- **📈 [`calcolaMedia(numeri)`](calcola-media/README.md)** — Calcola la media aritmetica di un array di numeri
+  [👉 Demo](calcola-media/index.html) · [📖 Doc](calcola-media/README.md)
+
+- **➕ [`calcolaSomma(numeri)`](calcola-somma/README.md)** — Calcola la somma di un array di numeri
+  [👉 Demo](calcola-somma/index.html) · [📖 Doc](calcola-somma/README.md)
+
+- **↗️ [`trovaMassimo(numeri)`](trova-massimo/README.md)** — Trova il valore massimo in un array
+  [👉 Demo](trova-massimo/index.html) · [📖 Doc](trova-massimo/README.md)
+
+- **↘️ [`trovaMinimo(numeri)`](trova-minimo/README.md)** — Trova il valore minimo in un array
+  [👉 Demo](trova-minimo/index.html) · [📖 Doc](trova-minimo/README.md)
+
+- **✅ [`verificaNumeroPrimo(numero)`](verifica-numero-primo/README.md)** — Verifica se un numero è primo
+  [👉 Demo](verifica-numero-primo/index.html) · [📖 Doc](verifica-numero-primo/README.md)
+
+- **🔺 [`calcolaIpotenuza(a, b)`](calcola-ipotenuza/README.md)** — Calcola l'ipotenusa di un triangolo rettangolo
+  [👉 Demo](calcola-ipotenuza/index.html) · [📖 Doc](calcola-ipotenuza/README.md)
+
+- **✖️ [`calcolaFattoriale(numero)`](calcola-fattoriale/README.md)** — Calcola il fattoriale di un numero (n!)
+  [👉 Demo](calcola-fattoriale/index.html) · [📖 Doc](calcola-fattoriale/README.md)
+
+- **↗️ [`calcolaPotenza(base, esponente)`](calcola-potenza/README.md)** — Calcola la potenza di un numero
+  [👉 Demo](calcola-potenza/index.html) · [📖 Doc](calcola-potenza/README.md)
+
+- **√ [`calcolaRadice(numero, indice)`](calcola-radice/README.md)** — Calcola la radice di un numero
+  [👉 Demo](calcola-radice/index.html) · [📖 Doc](calcola-radice/README.md)
+
+- **🎯 [`verificaInRange(numero, min, max)`](verifica-in-range/README.md)** — Verifica se un numero è in un range
+  [👉 Demo](verifica-in-range/index.html) · [📖 Doc](verifica-in-range/README.md)
+
+---
+
 ### 🔢 Utility e Generatori
 - **🎲 [`numeroCasuale(min, max)`](numero-casuale/README.md)** — Genera un numero intero casuale compreso tra min e max (inclusi)
   [👉 Demo](numero-casuale/index.html) · [📖 Doc](numero-casuale/README.md)
 
 - **🖨️ [`logColor(msg, colore)`](log-color/README.md)** — Stampa un messaggio colorato nella console del browser
   [👉 Demo](log-color/index.html) · [📖 Doc](log-color/README.md)
+
+- **🔤 [`filtraArray(array, callback)`](filtra-array/README.md)** — Filtra un array in base a una condizione
+  [👉 Demo](filtra-array/index.html) · [📖 Doc](filtra-array/README.md)
+
+- **🔄 [`ordinaArray(array, chiave)`](ordina-array/README.md)** — Ordina un array di numeri o oggetti
+  [👉 Demo](ordina-array/index.html) · [📖 Doc](ordina-array/README.md)
+
+- **🔀 [`invertiStringa(testo)`](inverti-stringa/README.md)** — Inverte una stringa
+  [👉 Demo](inverti-stringa/index.html) · [📖 Doc](inverti-stringa/README.md)
+
+- **🗑️ [`rimuoviDuplicati(array)`](rimuovi-duplicati/README.md)** — Rimuove i duplicati da un array
+  [👉 Demo](rimuovi-duplicati/index.html) · [📖 Doc](rimuovi-duplicati/README.md)
+
+- **🎲 [`mescolaArray(array)`](mescola-array/README.md)** — Mescola casualmente gli elementi di un array
+  [👉 Demo](mescola-array/index.html) · [📖 Doc](mescola-array/README.md)
+
+- **🔍 [`verificaTipo(valore)`](verifica-tipo/README.md)** — Verifica il tipo di una variabile
+  [👉 Demo](verifica-tipo/index.html) · [📖 Doc](verifica-tipo/README.md)
+
+- **🆔 [`generaId(lunghezza)`](genera-id/README.md)** — Genera un ID casuale alfanumerico
+  [👉 Demo](genera-id/index.html) · [📖 Doc](genera-id/README.md)
+
+- **📝 [`conteggioCaratteri(testo)`](conteggio-caratteri/README.md)** — Conta il numero di caratteri in una stringa
+  [👉 Demo](conteggio-caratteri/index.html) · [📖 Doc](conteggio-caratteri/README.md)
+
+- **📛 [`capitalizzaParola(testo)`](capitalizza-parola/README.md)** — Capitalizza la prima lettera di una stringa
+  [👉 Demo](capitalizza-parola/index.html) · [📖 Doc](capitalizza-parola/README.md)
+
+- **✂️ [`tagliaTestuale(testo, max)`](taglia-testuale/README.md)** — Taglia una stringa a N caratteri
+  [👉 Demo](taglia-testuale/index.html) · [📖 Doc](taglia-testuale/README.md)
+
+- **🔎 [`contieneTestuale(testo, sottotesto)`](contiene-testuale/README.md)** — Verifica se una stringa contiene un sottotesto
+  [👉 Demo](contiene-testuale/index.html) · [📖 Doc](contiene-testuale/README.md)
+
+- **🔄 [`sostituisciTestuale(testo, vecchio, nuovo)`](sostituisci-testuale/README.md)** — Sostituisce un sottotesto in una stringa
+  [👉 Demo](sostituisci-testuale/index.html) · [📖 Doc](sostituisci-testuale/README.md)
 
 ---
 
