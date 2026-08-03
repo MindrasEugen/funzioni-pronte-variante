@@ -1,12 +1,12 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { 
-  cambiaColore, 
-  crea, 
+  randomBgColor, 
+  createEl, 
   on, 
   fadeIn 
 } from '../src/dom/index.js';
 
-describe('Funzioni DOM', () => {
+describe('DOM Functions', () => {
   let container;
 
   beforeEach(() => {
@@ -15,63 +15,63 @@ describe('Funzioni DOM', () => {
     container = document.getElementById('test-container');
   });
 
-  describe('crea', () => {
-    it('dovrebbe creare un elemento div', () => {
-      const el = crea('div');
+  describe('createEl', () => {
+    it('should create a div element', () => {
+      const el = createEl('div');
       expect(el.tagName).toBe('DIV');
     });
 
-    it('dovrebbe creare un elemento con classe', () => {
-      const el = crea('div', 'test-class');
+    it('should create an element with class', () => {
+      const el = createEl('div', 'test-class');
       expect(el.className).toBe('test-class');
     });
 
-    it('dovrebbe creare un elemento con testo', () => {
-      const el = crea('div', '', 'Ciao');
-      expect(el.textContent).toBe('Ciao');
+    it('should create an element with text', () => {
+      const el = createEl('div', '', 'Hello');
+      expect(el.textContent).toBe('Hello');
     });
 
-    it('dovrebbe creare un elemento con classe e testo', () => {
-      const el = crea('span', 'my-span', 'Testo');
+    it('should create an element with class and text', () => {
+      const el = createEl('span', 'my-span', 'Text');
       expect(el.tagName).toBe('SPAN');
       expect(el.className).toBe('my-span');
-      expect(el.textContent).toBe('Testo');
+      expect(el.textContent).toBe('Text');
     });
   });
 
-  describe('cambiaColore', () => {
-    it('dovrebbe cambiare il colore di sfondo di un elemento', () => {
-      const el = crea('div');
+  describe('randomBgColor', () => {
+    it('should change the background color of an element', () => {
+      const el = createEl('div');
       container.appendChild(el);
       
       const initialColor = el.style.backgroundColor;
-      cambiaColore(el);
+      randomBgColor(el);
       const newColor = el.style.backgroundColor;
       
       expect(newColor).not.toBe(initialColor);
       expect(newColor).toMatch(/^rgb\(\d+, \d+, \d+\)$/);
     });
 
-    it('dovrebbe generare colori diversi a ogni chiamata', () => {
-      const el = crea('div');
+    it('should generate different colors on each call', () => {
+      const el = createEl('div');
       container.appendChild(el);
       
-      cambiaColore(el);
+      randomBgColor(el);
       const firstColor = el.style.backgroundColor;
       
-      cambiaColore(el);
+      randomBgColor(el);
       const secondColor = el.style.backgroundColor;
       
-      // Potrebbe essere uguale per caso, ma molto improbabile
-      // Quindi testiamo solo che sia un colore RGB valido
+      // Could be equal by chance, but very unlikely
+      // So we just test that it's a valid RGB color
       expect(firstColor).toMatch(/^rgb\(\d+, \d+, \d+\)$/);
       expect(secondColor).toMatch(/^rgb\(\d+, \d+, \d+\)$/);
     });
   });
 
   describe('on', () => {
-    it('dovrebbe aggiungere un event listener', () => {
-      const btn = crea('button', '', 'Click me');
+    it('should add an event listener', () => {
+      const btn = createEl('button', '', 'Click me');
       container.appendChild(btn);
       
       let clicked = false;
@@ -79,30 +79,30 @@ describe('Funzioni DOM', () => {
         clicked = true;
       });
       
-      // Simula click
+      // Simulate click
       btn.click();
       expect(clicked).toBe(true);
     });
   });
 
   describe('fadeIn', () => {
-    it('dovrebbe impostare opacity a 0 e poi a 1', () => {
-      const el = crea('div');
+    it('should set opacity to 0 and configure transition', () => {
+      const el = createEl('div');
       container.appendChild(el);
       
       expect(el.style.opacity).toBe('');
       
       fadeIn(el);
       
-      // Subito dopo l'esecuzione, opacity dovrebbe essere 0
+      // Right after execution, opacity should be 0
       expect(el.style.opacity).toBe('0');
       
-      // Dovrebbe avere una transizione configurata
+      // Should have a transition configured
       expect(el.style.transition).toContain('opacity');
     });
 
-    it('dovrebbe accettare durata personalizzata', () => {
-      const el = crea('div');
+    it('should accept custom duration', () => {
+      const el = createEl('div');
       container.appendChild(el);
       
       fadeIn(el, 5000);

@@ -1,10 +1,10 @@
 /**
- * Funzioni String - Manipolazione di stringhe
+ * String Functions - String manipulation
  */
 
-export { invertiStringa } from './invertiStringa.js';
-export { conteggioCaratteri } from './conteggioCaratteri.js';
-export { capitalizzaParola } from './capitalizzaParola.js';
-export { tagliaTestuale } from './tagliaTestuale.js';
-export { contieneTestuale } from './contieneTestuale.js';
-export { sostituisciTestuale } from './sostituisciTestuale.js';
+export { reverseString } from './reverseString.js';
+export { countChars } from './countChars.js';
+export { capitalize } from './capitalize.js';
+export { truncate } from './truncate.js';
+export { includesText } from './includesText.js';
+export { replaceText } from './replaceText.js';

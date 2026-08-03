@@ -1,125 +1,125 @@
 import { describe, it, expect } from 'vitest';
 import { 
-  invertiStringa,
-  conteggioCaratteri,
-  capitalizzaParola,
-  tagliaTestuale,
-  contieneTestuale,
-  sostituisciTestuale
+  reverseString,
+  countChars,
+  capitalize,
+  truncate,
+  includesText,
+  replaceText
 } from '../src/string/index.js';
 
-describe('Funzioni String', () => {
-  describe('invertiStringa', () => {
-    it('dovrebbe invertire una stringa', () => {
-      expect(invertiStringa('ciao')).toBe('oaic');
+describe('String Functions', () => {
+  describe('reverseString', () => {
+    it('should reverse a string', () => {
+      expect(reverseString('hello')).toBe('olleh');
     });
 
-    it('dovrebbe invertire una stringa con numeri', () => {
-      expect(invertiStringa('123')).toBe('321');
+    it('should reverse a string with numbers', () => {
+      expect(reverseString('123')).toBe('321');
     });
 
-    it('dovrebbe restituire stringa vuota per stringa vuota', () => {
-      expect(invertiStringa('')).toBe('');
+    it('should return empty string for empty string', () => {
+      expect(reverseString('')).toBe('');
     });
 
-    it('dovrebbe restituire stringa vuota per input non stringa', () => {
-      expect(invertiStringa(null)).toBe('');
-      expect(invertiStringa(123)).toBe('');
-    });
-  });
-
-  describe('conteggioCaratteri', () => {
-    it('dovrebbe contare i caratteri di una stringa', () => {
-      expect(conteggioCaratteri('ciao')).toBe(4);
-    });
-
-    it('dovrebbe contare i caratteri inclusi spazi e punteggiatura', () => {
-      expect(conteggioCaratteri('Ciao mondo!')).toBe(11);
-    });
-
-    it('dovrebbe restituire 0 per stringa vuota', () => {
-      expect(conteggioCaratteri('')).toBe(0);
-    });
-
-    it('dovrebbe restituire 0 per input non stringa', () => {
-      expect(conteggioCaratteri(null)).toBe(0);
-      expect(conteggioCaratteri(123)).toBe(0);
+    it('should return empty string for non-string input', () => {
+      expect(reverseString(null)).toBe('');
+      expect(reverseString(123)).toBe('');
     });
   });
 
-  describe('capitalizzaParola', () => {
-    it('dovrebbe capitalizzare la prima lettera', () => {
-      expect(capitalizzaParola('gino')).toBe('Gino');
+  describe('countChars', () => {
+    it('should count characters in a string', () => {
+      expect(countChars('hello')).toBe(5);
     });
 
-    it('dovrebbe transformare il resto in minuscolo', () => {
-      expect(capitalizzaParola('CIAO')).toBe('Ciao');
-      expect(capitalizzaParola('jAvAsCrIpT')).toBe('Javascript');
+    it('should count characters including spaces and punctuation', () => {
+      expect(countChars('Hello world!')).toBe(12);
     });
 
-    it('dovrebbe restituire stringa vuota per stringa vuota', () => {
-      expect(capitalizzaParola('')).toBe('');
+    it('should return 0 for empty string', () => {
+      expect(countChars('')).toBe(0);
     });
 
-    it('dovrebbe restituire stringa vuota per input non stringa', () => {
-      expect(capitalizzaParola(null)).toBe('');
-    });
-  });
-
-  describe('tagliaTestuale', () => {
-    it('dovrebbe tagliare una stringa a N caratteri', () => {
-      expect(tagliaTestuale('ciao mondo', 4)).toBe('ciao');
-    });
-
-    it('dovrebbe restituire la stringa originale se è più corta di max', () => {
-      expect(tagliaTestuale('ciao', 10)).toBe('ciao');
-    });
-
-    it('dovrebbe restituire stringa vuota se max <= 0', () => {
-      expect(tagliaTestuale('ciao', 0)).toBe('');
-      expect(tagliaTestuale('ciao', -1)).toBe('');
-    });
-
-    it('dovrebbe restituire stringa vuota per input non stringa', () => {
-      expect(tagliaTestuale(null, 5)).toBe('');
+    it('should return 0 for non-string input', () => {
+      expect(countChars(null)).toBe(0);
+      expect(countChars(123)).toBe(0);
     });
   });
 
-  describe('contieneTestuale', () => {
-    it('dovrebbe restituire true se il sottotesto è contenuto', () => {
-      expect(contieneTestuale('Ciao mondo', 'Ciao')).toBe(true);
-      expect(contieneTestuale('Ciao mondo', 'mondo')).toBe(true);
+  describe('capitalize', () => {
+    it('should capitalize the first letter', () => {
+      expect(capitalize('gino')).toBe('Gino');
     });
 
-    it('dovrebbe restituire false se il sottotesto non è contenuto', () => {
-      expect(contieneTestuale('Ciao mondo', 'Mondo')).toBe(false);
+    it('should transform the rest to lowercase', () => {
+      expect(capitalize('CIAO')).toBe('Ciao');
+      expect(capitalize('jAvAsCrIpT')).toBe('Javascript');
     });
 
-    it('dovrebbe essere case-sensitive', () => {
-      expect(contieneTestuale('Ciao', 'ciao')).toBe(false);
+    it('should return empty string for empty string', () => {
+      expect(capitalize('')).toBe('');
     });
 
-    it('dovrebbe restituire false per input non stringhe', () => {
-      expect(contieneTestuale(123, 'ciao')).toBe(false);
-      expect(contieneTestuale('ciao', null)).toBe(false);
+    it('should return empty string for non-string input', () => {
+      expect(capitalize(null)).toBe('');
     });
   });
 
-  describe('sostituisciTestuale', () => {
-    it('dovrebbe sostituire tutte le occorrenze', () => {
-      expect(sostituisciTestuale('ciao ciao', 'ciao', 'addio')).toBe('addio addio');
+  describe('truncate', () => {
+    it('should truncate a string to N characters', () => {
+      expect(truncate('hello world', 5)).toBe('hello');
     });
 
-    it('dovrebbe restituire la stringa originale se non trova il testo', () => {
-      expect(sostituisciTestuale('testo', 'x', 'y')).toBe('testo');
+    it('should return the original string if it is shorter than max', () => {
+      expect(truncate('hello', 10)).toBe('hello');
     });
 
-    it('dovrebbe sostituire con stringa vuota', () => {
-      expect(sostituisciTestuale('JavaScript', 'Script', '')).toBe('Java');
+    it('should return empty string if max <= 0', () => {
+      expect(truncate('hello', 0)).toBe('');
+      expect(truncate('hello', -1)).toBe('');
     });
 
-    it('dovrebbe restituire stringa vuota per input non stringa', () => {
-      expect(sostituisciTestuale(null, 'a', 'b')).toBe('');
+    it('should return empty string for non-string input', () => {
+      expect(truncate(null, 5)).toBe('');
+    });
+  });
+
+  describe('includesText', () => {
+    it('should return true if substring is contained', () => {
+      expect(includesText('Hello world', 'Hello')).toBe(true);
+      expect(includesText('Hello world', 'world')).toBe(true);
+    });
+
+    it('should return false if substring is not contained', () => {
+      expect(includesText('Hello world', 'World')).toBe(false);
+    });
+
+    it('should be case-sensitive', () => {
+      expect(includesText('Hello', 'hello')).toBe(false);
+    });
+
+    it('should return false for non-string inputs', () => {
+      expect(includesText(123, 'hello')).toBe(false);
+      expect(includesText('hello', null)).toBe(false);
+    });
+  });
+
+  describe('replaceText', () => {
+    it('should replace all occurrences', () => {
+      expect(replaceText('hello hello', 'hello', 'goodbye')).toBe('goodbye goodbye');
+    });
+
+    it('should return the original string if text is not found', () => {
+      expect(replaceText('hello', 'x', 'y')).toBe('hello');
+    });
+
+    it('should replace with empty string', () => {
+      expect(replaceText('JavaScript', 'Script', '')).toBe('Java');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(replaceText(null, 'a', 'b')).toBe('');
     });
   });
 });

@@ -2,16 +2,16 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 
-// Configurazione per build categorizzati
-const categories = ['dom', 'math', 'array', 'string', 'utility', 'shortcuts'];
+// Configuration for categorized builds
+const categories = ['dom', 'math', 'array', 'string', 'utils', 'shortcuts'];
 
-// Build principale (tutto insieme)
+// Main builds (all together)
 const mainBuilds = [
   // CommonJS build
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/funzioni-salvate.js',
+      file: 'dist/utility-kit.js',
       format: 'cjs',
       exports: 'named'
     },
@@ -24,7 +24,7 @@ const mainBuilds = [
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/funzioni-salvate.esm.js',
+      file: 'dist/utility-kit.esm.js',
       format: 'esm'
     },
     plugins: [
@@ -32,13 +32,13 @@ const mainBuilds = [
       commonjs()
     ]
   },
-  // Minified UMD build per browser
+  // Minified UMD build for browser
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/funzioni-salvate.min.js',
+      file: 'dist/utility-kit.min.js',
       format: 'umd',
-      name: 'FunzioniSalvate'
+      name: 'UtilityKit'
     },
     plugins: [
       nodeResolve(),
@@ -48,7 +48,7 @@ const mainBuilds = [
   }
 ];
 
-// Build per categorie (per import categorizzati)
+// Category builds (for categorized imports)
 const categoryBuilds = categories.flatMap(category => [
   {
     input: `src/${category}/index.js`,

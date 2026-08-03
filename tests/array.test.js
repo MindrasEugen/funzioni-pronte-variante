@@ -1,98 +1,98 @@
 import { describe, it, expect } from 'vitest';
 import { 
-  filtraArray,
-  ordinaArray,
-  rimuoviDuplicati,
-  mescolaArray
+  filterArray,
+  sortArray,
+  unique,
+  shuffle
 } from '../src/array/index.js';
 
-describe('Funzioni Array', () => {
-  describe('filtraArray', () => {
-    it('dovrebbe filtrare un array di numeri', () => {
+describe('Array Functions', () => {
+  describe('filterArray', () => {
+    it('should filter an array of numbers', () => {
       const array = [1, 2, 3, 4, 5];
-      const filtered = filtraArray(array, x => x > 2);
+      const filtered = filterArray(array, x => x > 2);
       expect(filtered).toEqual([3, 4, 5]);
     });
 
-    it('dovrebbe filtrare un array di stringhe', () => {
+    it('should filter an array of strings', () => {
       const array = ['a', 'b', 'c', 'd'];
-      const filtered = filtraArray(array, x => x !== 'b');
+      const filtered = filterArray(array, x => x !== 'b');
       expect(filtered).toEqual(['a', 'c', 'd']);
     });
 
-    it('dovrebbe restituire array vuoto per input non array', () => {
-      expect(filtraArray(null)).toEqual([]);
-      expect(filtraArray('non array')).toEqual([]);
+    it('should return empty array for non-array input', () => {
+      expect(filterArray(null)).toEqual([]);
+      expect(filterArray('non array')).toEqual([]);
     });
 
-    it('dovrebbe restituire array vuoto per array vuoto', () => {
-      expect(filtraArray([], x => x)).toEqual([]);
+    it('should return empty array for empty array', () => {
+      expect(filterArray([], x => x)).toEqual([]);
     });
   });
 
-  describe('ordinaArray', () => {
-    it('dovrebbe ordinare un array di numeri in modo crescente', () => {
+  describe('sortArray', () => {
+    it('should sort an array of numbers in ascending order', () => {
       const array = [3, 1, 2, 5, 4];
-      const sorted = ordinaArray(array);
+      const sorted = sortArray(array);
       expect(sorted).toEqual([1, 2, 3, 4, 5]);
     });
 
-    it('dovrebbe ordinare un array di stringhe', () => {
+    it('should sort an array of strings', () => {
       const array = ['c', 'a', 'b'];
-      const sorted = ordinaArray(array);
+      const sorted = sortArray(array);
       expect(sorted).toEqual(['a', 'b', 'c']);
     });
 
-    it('dovrebbe ordinare un array di oggetti per chiave', () => {
+    it('should sort an array of objects by key', () => {
       const array = [{ id: 2 }, { id: 1 }, { id: 3 }];
-      const sorted = ordinaArray(array, 'id');
+      const sorted = sortArray(array, 'id');
       expect(sorted).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }]);
     });
 
-    it('dovrebbe restituire array vuoto per input non array', () => {
-      expect(ordinaArray(null)).toEqual([]);
+    it('should return empty array for non-array input', () => {
+      expect(sortArray(null)).toEqual([]);
     });
 
-    it('dovrebbe non modificare l array originale', () => {
+    it('should not modify the original array', () => {
       const array = [3, 1, 2];
       const original = [...array];
-      ordinaArray(array);
+      sortArray(array);
       expect(array).toEqual(original);
     });
   });
 
-  describe('rimuoviDuplicati', () => {
-    it('dovrebbe rimuovere i duplicati da un array di numeri', () => {
+  describe('unique', () => {
+    it('should remove duplicates from an array of numbers', () => {
       const array = [1, 2, 2, 3, 3, 3, 4];
-      const unique = rimuoviDuplicati(array);
-      expect(unique).toEqual([1, 2, 3, 4]);
+      const result = unique(array);
+      expect(result).toEqual([1, 2, 3, 4]);
     });
 
-    it('dovrebbe rimuovere i duplicati da un array di stringhe', () => {
+    it('should remove duplicates from an array of strings', () => {
       const array = ['a', 'b', 'a', 'c', 'b'];
-      const unique = rimuoviDuplicati(array);
-      expect(unique).toEqual(['a', 'b', 'c']);
+      const result = unique(array);
+      expect(result).toEqual(['a', 'b', 'c']);
     });
 
-    it('dovrebbe restituire array vuoto per input non array', () => {
-      expect(rimuoviDuplicati(null)).toEqual([]);
+    it('should return empty array for non-array input', () => {
+      expect(unique(null)).toEqual([]);
     });
 
-    it('dovrebbe restituire array vuoto per array vuoto', () => {
-      expect(rimuoviDuplicati([])).toEqual([]);
+    it('should return empty array for empty array', () => {
+      expect(unique([])).toEqual([]);
     });
 
-    it('dovrebbe preservare l ordine dei primi occorrenze', () => {
+    it('should preserve the order of first occurrences', () => {
       const array = [3, 1, 2, 1, 3];
-      const unique = rimuoviDuplicati(array);
-      expect(unique).toEqual([3, 1, 2]);
+      const result = unique(array);
+      expect(result).toEqual([3, 1, 2]);
     });
   });
 
-  describe('mescolaArray', () => {
-    it('dovrebbe mescolare un array', () => {
+  describe('shuffle', () => {
+    it('should shuffle an array', () => {
       const array = [1, 2, 3, 4, 5];
-      const shuffled = mescolaArray(array);
+      const shuffled = shuffle(array);
       
       expect(shuffled).toHaveLength(5);
       expect(shuffled.sort()).toEqual(array.sort());
@@ -103,18 +103,18 @@ describe('Funzioni Array', () => {
       expect(shuffled).toContain(5);
     });
 
-    it('dovrebbe restituire array vuoto per input non array', () => {
-      expect(mescolaArray(null)).toEqual([]);
+    it('should return empty array for non-array input', () => {
+      expect(shuffle(null)).toEqual([]);
     });
 
-    it('dovrebbe restituire array vuoto per array vuoto', () => {
-      expect(mescolaArray([])).toEqual([]);
+    it('should return empty array for empty array', () => {
+      expect(shuffle([])).toEqual([]);
     });
 
-    it('dovrebbe non modificare l array originale', () => {
+    it('should not modify the original array', () => {
       const array = [1, 2, 3];
       const original = [...array];
-      mescolaArray(array);
+      shuffle(array);
       expect(array).toEqual(original);
     });
   });

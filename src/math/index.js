@@ -1,16 +1,16 @@
 /**
- * Funzioni Matematiche - Operazioni matematiche
+ * Math Functions - Mathematical operations
  */
 
-export { calcolaMedia } from './calcolaMedia.js';
-export { calcolaPercentuale } from './calcolaPercentuale.js';
-export { arrotondaNumero } from './arrotondaNumero.js';
-export { calcolaSomma } from './calcolaSomma.js';
-export { trovaMassimo } from './trovaMassimo.js';
-export { trovaMinimo } from './trovaMinimo.js';
-export { verificaNumeroPrimo } from './verificaNumeroPrimo.js';
-export { calcolaIpotenuza } from './calcolaIpotenuza.js';
-export { calcolaFattoriale } from './calcolaFattoriale.js';
-export { calcolaPotenza } from './calcolaPotenza.js';
-export { calcolaRadice } from './calcolaRadice.js';
-export { verificaInRange } from './verificaInRange.js';
+export { calculateAverage } from './calculateAverage.js';
+export { calculatePercentage } from './calculatePercentage.js';
+export { round } from './round.js';
+export { sum } from './sum.js';
+export { findMax } from './findMax.js';
+export { findMin } from './findMin.js';
+export { isPrime } from './isPrime.js';
+export { calculateHypotenuse } from './calculateHypotenuse.js';
+export { factorial } from './factorial.js';
+export { power } from './power.js';
+export { nthRoot } from './nthRoot.js';
+export { isInRange } from './isInRange.js';
