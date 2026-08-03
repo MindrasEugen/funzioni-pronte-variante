@@ -1,6 +1,6 @@
 # Utility Kit
 
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/utility-kit)
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/@mindraseugen/utility-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests: 110 passed](https://img.shields.io/badge/Tests-110%20passed-brightgreen.svg)](https://github.com/MindrasEugen/utility-kit/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Supported-3178c6.svg)](https://www.typescriptlang.org/)
@@ -12,35 +12,35 @@ A collection of 28+ ready-to-use, categorized, and well-tested functions to spee
 ## 🚀 Installation
 
 ```bash
-npm install utility-kit
+npm install @mindraseugen/utility-kit
 # or
-yarn add utility-kit
+yarn add @mindraseugen/utility-kit
 # or
-pnpm add utility-kit
+pnpm add @mindraseugen/utility-kit
 ```
 
 ## 📦 Import
 
 ### Full Import
 ```javascript
-import * as uk from 'utility-kit';
+import * as uk from '@mindraseugen/utility-kit';
 uk.randomBgColor(document.body);
 uk.calculateAverage([10, 20, 30]);
 ```
 
 ### Category-based Import (Tree-shaking optimized)
 ```javascript
-import { randomBgColor, createEl, on, fadeIn } from 'utility-kit/dom';
-import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange } from 'utility-kit/math';
-import { filterArray, sortArray, unique, shuffle } from 'utility-kit/array';
-import { reverseString, countChars, capitalize, truncate, includesText, replaceText } from 'utility-kit/string';
-import { logColor, getType, generateId, randomInt } from 'utility-kit/utils';
-import { select } from 'utility-kit/shortcuts';
+import { randomBgColor, createEl, on, fadeIn } from '@mindraseugen/utility-kit/dom';
+import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange } from '@mindraseugen/utility-kit/math';
+import { filterArray, sortArray, unique, shuffle } from '@mindraseugen/utility-kit/array';
+import { reverseString, countChars, capitalize, truncate, includesText, replaceText } from '@mindraseugen/utility-kit/string';
+import { logColor, getType, generateId, randomInt } from '@mindraseugen/utility-kit/utils';
+import { select } from '@mindraseugen/utility-kit/shortcuts';
 ```
 
 ### CDN (for browser)
 ```html
-<script src="https://unpkg.com/utility-kit@1.0.0/dist/utility-kit.min.js"></script>
+<script src="https://unpkg.com/@mindraseugen/utility-kit@1.0.0/dist/utility-kit.min.js"></script>
 <script>
   UtilityKit.randomBgColor(document.body);
 </script>
@@ -61,7 +61,7 @@ import { select } from 'utility-kit/shortcuts';
 
 ### React
 ```jsx
-import { randomBgColor } from 'utility-kit';
+import { randomBgColor } from '@mindraseugen/utility-kit';
 
 function MyComponent() {
   return <div onClick={() => randomBgColor(document.body)}>Click me!</div>;
@@ -71,7 +71,7 @@ function MyComponent() {
 ### Vue
 ```vue
 <script setup>
-import { calculateAverage } from 'utility-kit';
+import { calculateAverage } from '@mindraseugen/utility-kit';
 const average = calculateAverage([25, 30, 28]);
 </script>
 <template><p>Average: {{ average }}</p></template>
@@ -79,7 +79,7 @@ const average = calculateAverage([25, 30, 28]);
 
 ### Vanilla JavaScript
 ```javascript
-import { generateId, randomInt } from 'utility-kit';
+import { generateId, randomInt } from '@mindraseugen/utility-kit';
 const userId = generateId(16);
 const randomNum = randomInt(1, 100);
 ```
