@@ -130,6 +130,138 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Author:** MindrasEugen  
-**Version:** 1.0.0  
+# Utility Kit - Versione Italiana
+
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/@mindraseugen/utility-kit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tests: 110 passed](https://img.shields.io/badge/Tests-110%20passed-brightgreen.svg)](https://github.com/MindrasEugen/utility-kit/actions)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Supported-3178c6.svg)](https://www.typescriptlang.org/)
+
+**Una libreria utility JavaScript leggera per lo sviluppo web moderno.**
+
+Una raccolta di 28+ funzioni pronte all'uso, categorizzate e ben testate per accelerare lo sviluppo della tua applicazione web.
+
+## 🚀 Installazione
+
+```bash
+npm install @mindraseugen/utility-kit
+# o
+yarn add @mindraseugen/utility-kit
+# o
+pnpm add @mindraseugen/utility-kit
+```
+
+## 📦 Importa
+
+### Importazione completa
+```javascript
+import * as uk from '@mindraseugen/utility-kit';
+uk.randomBgColor(document.body);
+uk.calculateAverage([10, 20, 30]);
+```
+
+### Importazione basata su categorie (ottimizzato per tree-shaking)
+```javascript
+import { randomBgColor, createEl, on, fadeIn } from '@mindraseugen/utility-kit/dom';
+import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange } from '@mindraseugen/utility-kit/math';
+import { filterArray, sortArray, unique, shuffle } from '@mindraseugen/utility-kit/array';
+import { reverseString, countChars, capitalize, truncate, includesText, replaceText } from '@mindraseugen/utility-kit/string';
+import { logColor, getType, generateId, randomInt } from '@mindraseugen/utility-kit/utils';
+import { select } from '@mindraseugen/utility-kit/shortcuts';
+```
+
+### CDN (per browser)
+```html
+<script src="https://unpkg.com/@mindraseugen/utility-kit@1.0.0/dist/utility-kit.min.js"></script>
+<script>
+  UtilityKit.randomBgColor(document.body);
+</script>
+```
+
+## 📁 Categorie
+
+| Categoria | Funzioni | Descrizione |
+|-----------|----------|-------------|
+| **DOM** | `randomBgColor`, `createEl`, `on`, `fadeIn` | Manipolazione DOM e animazioni |
+| **Math** | `calculateAverage`, `sum`, `findMax`, `findMin`, `round`, `calculatePercentage`, `isPrime`, `calculateHypotenuse`, `factorial`, `power`, `nthRoot`, `isInRange` | Operazioni matematiche |
+| **Array** | `filterArray`, `sortArray`, `unique`, `shuffle` | Manipolazione array |
+| **String** | `reverseString`, `countChars`, `capitalize`, `truncate`, `includesText`, `replaceText` | Manipolazione stringhe |
+| **Utils** | `logColor`, `getType`, `generateId`, `randomInt` | Utilità generiche |
+| **Shortcuts** | `select` | Selezione elementi DOM |
+
+## 🎯 Esempi di utilizzo
+
+### React
+```jsx
+import { randomBgColor } from '@mindraseugen/utility-kit';
+
+function MyComponent() {
+  return <div onClick={() => randomBgColor(document.body)}>Cliccami!</div>;
+}
+```
+
+### Vue
+```vue
+<script setup>
+import { calculateAverage } from '@mindraseugen/utility-kit';
+const average = calculateAverage([25, 30, 28]);
+</script>
+<template><p>Media: {{ average }}</p></template>
+```
+
+### JavaScript puro
+```javascript
+import { generateId, randomInt } from '@mindraseugen/utility-kit';
+const userId = generateId(16);
+const randomNum = randomInt(1, 100);
+```
+
+## 🔧 Script
+
+| Script | Descrizione |
+|--------|-------------|
+| `npm run build` | Crea bundle in `/dist/` |
+| `npm test` | Esegui tutti i test |
+| `npm run test:coverage` | Esegui test con coverage |
+| `npm run dev` | Build in modalità watch |
+
+## 📁 Struttura del progetto
+
+```
+utility-kit/
+├── src/                          # Codice sorgente
+│   ├── dom/                      # Funzioni DOM
+│   ├── math/                     # Funzioni Matematiche
+│   ├── array/                    # Funzioni Array
+│   ├── string/                   # Funzioni Stringhe
+│   ├── utils/                     # Funzioni di Utilità
+│   ├── shortcuts/                # Scorciatoie
+│   └── index.js                  # Punto di ingresso
+├── dist/                         # Output della build
+├── types/                       # Definizioni TypeScript
+├── tests/                        # Test unitari
+├── demo/                         # Demo interattive
+├── package.json
+├── rollup.config.js
+├── tsconfig.json
+└── README.md
+```
+
+## 🤝 Contribuire
+
+1. Fork del repository
+2. Crea un branch (`git checkout -b feature/new-function`)
+3. Aggiungi la tua funzione in `src/` seguendo le convenzioni
+4. Aggiungi test in `tests/`
+5. Esegui `npm run build && npm test`
+6. Fai una pull request
+
+## 📜 Licenza
+
+Licenza MIT - vedi [LICENSE](LICENSE) per i dettagli.
+
+---
+
+**Author:** MindrasEugen
+**Version:** 1.0.0
 **Last updated:** 2026-08-03

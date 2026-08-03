@@ -1,5 +1,6 @@
 /**
  * Utility Functions - General purpose utilities
+ * Funzioni di Utilità - Utilità generiche
  */
 
 export { logColor } from './logColor.js';

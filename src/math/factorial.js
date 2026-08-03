@@ -1,8 +1,9 @@
 /**
  * Calculates the factorial of a number (n!).
+ * Calcola il fattoriale di un numero (n!).
  * 
- * @param {number} number - The number to calculate factorial of
- * @returns {number|undefined} The factorial, or undefined for negative numbers
+ * @param {number} number - The number to calculate factorial of / Il numero di cui calcolare il fattoriale
+ * @returns {number|undefined} The factorial, or undefined for negative numbers / Il fattoriale, o undefined per numeri negativi
  */
 function factorial(number) {
     if (number < 0) return undefined;

@@ -1,5 +1,6 @@
 /**
  * Array Functions - Array manipulation
+ * Funzioni Array - Manipolazione array
  */
 
 export { filterArray } from './filterArray.js';

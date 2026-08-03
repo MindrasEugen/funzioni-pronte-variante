@@ -1,5 +1,6 @@
 /**
  * DOM Functions - DOM manipulation and animations
+ * Funzioni DOM - Manipolazione DOM e animazioni
  */
 
 export { randomBgColor } from './randomBgColor.js';

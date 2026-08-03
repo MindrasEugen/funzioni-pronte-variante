@@ -3,11 +3,14 @@ import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 
 // Configuration for categorized builds
+// Configurazione per build categorizzati
 const categories = ['dom', 'math', 'array', 'string', 'utils', 'shortcuts'];
 
 // Main builds (all together)
+// Build principali (tutti insieme)
 const mainBuilds = [
   // CommonJS build
+  // Build CommonJS
   {
     input: 'src/index.js',
     output: {
@@ -21,6 +24,7 @@ const mainBuilds = [
     ]
   },
   // ES Module build
+  // Build ES Module
   {
     input: 'src/index.js',
     output: {
@@ -33,6 +37,7 @@ const mainBuilds = [
     ]
   },
   // Minified UMD build for browser
+  // Build UMD minimizzato per browser
   {
     input: 'src/index.js',
     output: {
@@ -49,6 +54,7 @@ const mainBuilds = [
 ];
 
 // Category builds (for categorized imports)
+// Build categorizzati (per import categorizzati)
 const categoryBuilds = categories.flatMap(category => [
   {
     input: `src/${category}/index.js`,

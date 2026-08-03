@@ -1,8 +1,9 @@
 /**
  * Capitalizes the first letter of a string.
+ * rende maiuscola la prima lettera di una stringa.
  * 
- * @param {string} text - The string to capitalize
- * @returns {string} The string with first letter uppercase and rest lowercase
+ * @param {string} text - The string to capitalize / La stringa da rendere maiuscola
+ * @returns {string} The string with first letter uppercase and rest lowercase / La stringa con la prima lettera maiuscola e il resto minuscola
  */
 function capitalize(text) {
     if (typeof text !== 'string') return '';
