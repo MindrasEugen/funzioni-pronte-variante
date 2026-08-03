@@ -1,8 +1,8 @@
 /**
- * Funzioni DOM - Manipolazione del DOM e animazioni
+ * DOM Functions - DOM manipulation and animations
  */
 
-export { cambiaColore } from './cambiaColore.js';
-export { crea } from './crea.js';
+export { randomBgColor } from './randomBgColor.js';
+export { createEl } from './createEl.js';
 export { on } from './on.js';
 export { fadeIn } from './fadeIn.js';

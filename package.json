@@ -1,15 +1,15 @@
 {
   "type": "module",
-  "name": "funzioni-salvate",
+  "name": "@mindraseugen/utility-kit",
   "version": "1.0.0",
-  "description": "Mini libreria di funzioni utility JavaScript per sviluppo web moderno. Include funzioni DOM, matematiche, array, stringhe e utility generiche.",
-  "main": "dist/funzioni-salvate.js",
-  "module": "dist/funzioni-salvate.esm.js",
+  "description": "A lightweight JavaScript utility library for modern web development. Includes DOM manipulation, math operations, array utilities, string helpers, and general purpose functions.",
+  "main": "dist/utility-kit.js",
+  "module": "dist/utility-kit.esm.js",
   "types": "types/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/funzioni-salvate.js",
-      "import": "./dist/funzioni-salvate.esm.js"
+      "require": "./dist/utility-kit.js",
+      "import": "./dist/utility-kit.esm.js"
     },
     "./dom": {
       "require": "./dist/dom/index.js",
@@ -27,9 +27,9 @@
       "require": "./dist/string/index.js",
       "import": "./dist/string/index.esm.js"
     },
-    "./utility": {
-      "require": "./dist/utility/index.js",
-      "import": "./dist/utility/index.esm.js"
+    "./utils": {
+      "require": "./dist/utils/index.js",
+      "import": "./dist/utils/index.esm.js"
     },
     "./shortcuts": {
       "require": "./dist/shortcuts/index.js",
@@ -55,19 +55,23 @@
     "string",
     "helper",
     "functions",
-    "libreria",
-    "italiano"
+    "library",
+    "web",
+    "development",
+    "lightweight",
+    "esm",
+    "commonjs"
   ],
   "author": "MindrasEugen",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MindrasEugen/funzioni-salvate.git"
+    "url": "https://github.com/MindrasEugen/utility-kit.git"
   },
   "bugs": {
-    "url": "https://github.com/MindrasEugen/funzioni-salvate/issues"
+    "url": "https://github.com/MindrasEugen/utility-kit/issues"
   },
-  "homepage": "https://github.com/MindrasEugen/funzioni-salvate#readme",
+  "homepage": "https://github.com/MindrasEugen/utility-kit#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",

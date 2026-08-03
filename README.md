@@ -1,133 +1,135 @@
-# Funzioni Salvate
+# Utility Kit
 
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/funzioni-salvate)
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/@mindraseugen/utility-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests: 110 passed](https://img.shields.io/badge/Tests-110%20passed-brightgreen.svg)](https://github.com/MindrasEugen/funzioni-salvate/actions)
+[![Tests: 110 passed](https://img.shields.io/badge/Tests-110%20passed-brightgreen.svg)](https://github.com/MindrasEugen/utility-kit/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Supported-3178c6.svg)](https://www.typescriptlang.org/)
 
-**Mini libreria di funzioni utility JavaScript per sviluppo web moderno.**
+**A lightweight JavaScript utility library for modern web development.**
 
-Una raccolta di 28+ funzioni pronte all'uso, categorizzate e ben testate, per accelerare lo sviluppo di applicazioni web.
+A collection of 28+ ready-to-use, categorized, and well-tested functions to speed up your web application development.
 
-## 🚀 Installazione
+## 🚀 Installation
 
 ```bash
-npm install funzioni-salvate
-# o
-yarn add funzioni-salvate
-# o
-pnpm add funzioni-salvate
+npm install @mindraseugen/utility-kit
+# or
+yarn add @mindraseugen/utility-kit
+# or
+pnpm add @mindraseugen/utility-kit
 ```
 
 ## 📦 Import
 
-### Import completo
+### Full Import
 ```javascript
-import * as fs from 'funzioni-salvate';
-fs.cambiaColore(document.body);
-fs.calcolaMedia([10, 20, 30]);
+import * as uk from '@mindraseugen/utility-kit';
+uk.randomBgColor(document.body);
+uk.calculateAverage([10, 20, 30]);
 ```
 
-### Import categorizzato (tree-shaking ottimizzato)
+### Category-based Import (Tree-shaking optimized)
 ```javascript
-import { cambiaColore, fadeIn } from 'funzioni-salvate/dom';
-import { calcolaMedia, calcolaSomma } from 'funzioni-salvate/math';
-import { filtraArray, ordinaArray } from 'funzioni-salvate/array';
-import { invertiStringa, capitalizzaParola } from 'funzioni-salvate/string';
-import { generaId, numeroCasuale } from 'funzioni-salvate/utility';
+import { randomBgColor, createEl, on, fadeIn } from '@mindraseugen/utility-kit/dom';
+import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange } from '@mindraseugen/utility-kit/math';
+import { filterArray, sortArray, unique, shuffle } from '@mindraseugen/utility-kit/array';
+import { reverseString, countChars, capitalize, truncate, includesText, replaceText } from '@mindraseugen/utility-kit/string';
+import { logColor, getType, generateId, randomInt } from '@mindraseugen/utility-kit/utils';
+import { select } from '@mindraseugen/utility-kit/shortcuts';
 ```
 
-### CDN (per browser)
+### CDN (for browser)
 ```html
-<script src="https://unpkg.com/funzioni-salvate@1.0.0/dist/funzioni-salvate.min.js"></script>
+<script src="https://unpkg.com/@mindraseugen/utility-kit@1.0.0/dist/utility-kit.min.js"></script>
 <script>
-  FunzioniSalvate.cambiaColore(document.body);
+  UtilityKit.randomBgColor(document.body);
 </script>
 ```
 
-## 📁 Categorizzazione
+## 📁 Categories
 
-| Categoria | Funzioni | Descrizione |
+| Category | Functions | Description |
 |-----------|----------|-------------|
-| **DOM** | `cambiaColore`, `crea`, `fadeIn`, `on`, `query` | Manipolazione DOM e animazioni |
-| **Math** | `calcolaMedia`, `calcolaSomma`, `trovaMassimo`, `trovaMinimo`, `arrotondaNumero`, `calcolaPercentuale`, `verificaNumeroPrimo`, `calcolaIpotenuza`, `calcolaFattoriale`, `calcolaPotenza`, `calcolaRadice`, `verificaInRange` | Operazioni matematiche |
-| **Array** | `filtraArray`, `ordinaArray`, `rimuoviDuplicati`, `mescolaArray` | Manipolazione array |
-| **String** | `invertiStringa`, `conteggioCaratteri`, `capitalizzaParola`, `tagliaTestuale`, `contieneTestuale`, `sostituisciTestuale` | Manipolazione stringhe |
-| **Utility** | `logColor`, `verificaTipo`, `generaId`, `numeroCasuale` | Utility generiche |
+| **DOM** | `randomBgColor`, `createEl`, `on`, `fadeIn` | DOM manipulation and animations |
+| **Math** | `calculateAverage`, `sum`, `findMax`, `findMin`, `round`, `calculatePercentage`, `isPrime`, `calculateHypotenuse`, `factorial`, `power`, `nthRoot`, `isInRange` | Mathematical operations |
+| **Array** | `filterArray`, `sortArray`, `unique`, `shuffle` | Array manipulation |
+| **String** | `reverseString`, `countChars`, `capitalize`, `truncate`, `includesText`, `replaceText` | String manipulation |
+| **Utils** | `logColor`, `getType`, `generateId`, `randomInt` | General utilities |
+| **Shortcuts** | `select` | DOM element selection |
 
-## 🎯 Esempi d'Uso
+## 🎯 Usage Examples
 
 ### React
 ```jsx
-import { cambiaColore } from 'funzioni-salvate';
+import { randomBgColor } from '@mindraseugen/utility-kit';
 
 function MyComponent() {
-  return <div onClick={() => cambiaColore(document.body)}>Click me!</div>;
+  return <div onClick={() => randomBgColor(document.body)}>Click me!</div>;
 }
 ```
 
 ### Vue
 ```vue
 <script setup>
-import { calcolaMedia } from 'funzioni-salvate';
-const average = calcolaMedia([25, 30, 28]);
+import { calculateAverage } from '@mindraseugen/utility-kit';
+const average = calculateAverage([25, 30, 28]);
 </script>
-<template><p>Media: {{ average }}</p></template>
+<template><p>Average: {{ average }}</p></template>
 ```
 
 ### Vanilla JavaScript
 ```javascript
-import { generaId, numeroCasuale } from 'funzioni-salvate';
-const userId = generaId(16);
-const randomNum = numeroCasuale(1, 100);
+import { generateId, randomInt } from '@mindraseugen/utility-kit';
+const userId = generateId(16);
+const randomNum = randomInt(1, 100);
 ```
 
 ## 🔧 Scripts
 
-| Script | Descrizione |
+| Script | Description |
 |--------|-------------|
-| `npm run build` | Crea i bundle in `/dist/` |
-| `npm test` | Esegue tutti i test |
-| `npm run test:coverage` | Esegue test con coverage |
+| `npm run build` | Create bundles in `/dist/` |
+| `npm test` | Run all tests |
+| `npm run test:coverage` | Run tests with coverage |
 | `npm run dev` | Build in watch mode |
 
-## 📁 Struttura del Progetto
+## 📁 Project Structure
 
 ```
-funzioni-salvate/
-├── src/                          # Codice sorgente
-│   ├── dom/                      # Funzioni DOM
-│   ├── math/                     # Funzioni matematiche
-│   ├── array/                    # Funzioni array
-│   ├── string/                   # Funzioni stringhe
-│   ├── utility/                  # Utility generiche
+utility-kit/
+├── src/                          # Source code
+│   ├── dom/                      # DOM Functions
+│   ├── math/                     # Math Functions
+│   ├── array/                    # Array Functions
+│   ├── string/                   # String Functions
+│   ├── utils/                     # Utility Functions
 │   ├── shortcuts/                # Shortcuts
 │   └── index.js                  # Entry point
 ├── dist/                         # Build output
 ├── types/                       # TypeScript definitions
-├── tests/                        # Test unitari
-├── demo/                         # Demo interattive
+├── tests/                        # Unit tests
+├── demo/                         # Interactive demos
 ├── package.json
 ├── rollup.config.js
 ├── tsconfig.json
 └── README.md
 ```
 
-## 🤝 Contribuire
+## 🤝 Contributing
 
-1. Forka il repository
-2. Crea un branch (`git checkout -b feature/nuova-funzione`)
-3. Aggiungi la funzione in `src/` seguendo le convenzioni
-4. Aggiungi i test in `tests/`
-5. Esegui `npm run build && npm test`
-6. Fai una pull request
+1. Fork the repository
+2. Create a branch (`git checkout -b feature/new-function`)
+3. Add your function in `src/` following the conventions
+4. Add tests in `tests/`
+5. Run `npm run build && npm test`
+6. Make a pull request
 
-## 📜 Licenza
+## 📜 License
 
-MIT License - vedi [LICENSE](LICENSE) per dettagli.
+MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-**Autore:** MindrasEugen  
-**Versione:** 1.0.0  
-**Ultimo aggiornamento:** 2026-08-03
+**Author:** MindrasEugen  
+**Version:** 1.0.0  
+**Last updated:** 2026-08-03

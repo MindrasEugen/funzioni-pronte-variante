@@ -1,8 +1,8 @@
 /**
- * Funzioni Array - Manipolazione di array
+ * Array Functions - Array manipulation
  */
 
-export { filtraArray } from './filtraArray.js';
-export { ordinaArray } from './ordinaArray.js';
-export { rimuoviDuplicati } from './rimuoviDuplicati.js';
-export { mescolaArray } from './mescolaArray.js';
+export { filterArray } from './filterArray.js';
+export { sortArray } from './sortArray.js';
+export { unique } from './unique.js';
+export { shuffle } from './shuffle.js';

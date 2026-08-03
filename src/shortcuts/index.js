@@ -1,5 +1,5 @@
 /**
- * Shortcuts - Scorciatoie per operazioni comuni
+ * Shortcuts - Shortcuts for common operations
  */
 
-export { query } from './query.js';
+export { select } from './select.js';
