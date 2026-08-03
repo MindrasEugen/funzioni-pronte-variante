@@ -2,12 +2,16 @@
  * Utility Kit - Entry Point
  * A lightweight JavaScript utility library for modern web development.
  * 
+ * Utility Kit - Punto di ingresso
+ * Una libreria utility JavaScript leggera per lo sviluppo web moderno.
+ * 
  * @version 1.0.0
  * @author MindrasEugen
  * @license MIT
  */
 
 // Export all from categories
+// Esporta tutto dalle categorie
 export * from './dom/index.js';
 export * from './math/index.js';
 export * from './array/index.js';
@@ -16,6 +20,8 @@ export * from './utils/index.js';
 export * from './shortcuts/index.js';
 
 // Also export individually for optimal tree-shaking
+// Esporta anche singolarmente per tree-shaking ottimale
+// DOM
 // DOM
 export { randomBgColor } from './dom/randomBgColor.js';
 export { createEl } from './dom/createEl.js';
@@ -23,6 +29,7 @@ export { on } from './dom/on.js';
 export { fadeIn } from './dom/fadeIn.js';
 
 // Math
+// Matematica
 export { calculateAverage } from './math/calculateAverage.js';
 export { calculatePercentage } from './math/calculatePercentage.js';
 export { round } from './math/round.js';
@@ -37,12 +44,14 @@ export { nthRoot } from './math/nthRoot.js';
 export { isInRange } from './math/isInRange.js';
 
 // Array
+// Array
 export { filterArray } from './array/filterArray.js';
 export { sortArray } from './array/sortArray.js';
 export { unique } from './array/unique.js';
 export { shuffle } from './array/shuffle.js';
 
 // String
+// Stringhe
 export { reverseString } from './string/reverseString.js';
 export { countChars } from './string/countChars.js';
 export { capitalize } from './string/capitalize.js';
@@ -51,10 +60,12 @@ export { includesText } from './string/includesText.js';
 export { replaceText } from './string/replaceText.js';
 
 // Utils
+// Utilità
 export { logColor } from './utils/logColor.js';
 export { getType } from './utils/getType.js';
 export { generateId } from './utils/generateId.js';
 export { randomInt } from './utils/randomInt.js';
 
 // Shortcuts
+// Scorciatoie
 export { select } from './shortcuts/select.js';

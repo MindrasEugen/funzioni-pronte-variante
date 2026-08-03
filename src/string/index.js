@@ -1,5 +1,6 @@
 /**
  * String Functions - String manipulation
+ * Funzioni Stringhe - Manipolazione stringhe
  */
 
 export { reverseString } from './reverseString.js';

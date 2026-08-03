@@ -1,9 +1,10 @@
 /**
  * Sorts an array of numbers or objects.
+ * Ordina un array di numeri o oggetti.
  * 
- * @param {Array} array - The array to sort
- * @param {string} [key] - The property to use for sorting (for arrays of objects)
- * @returns {Array} A new sorted array
+ * @param {Array} array - The array to sort / L'array da ordinare
+ * @param {string} [key] - The property to use for sorting (for arrays of objects) / La proprietà da usare per l'ordinamento (per array di oggetti)
+ * @returns {Array} A new sorted array / Un nuovo array ordinato
  */
 function sortArray(array, key) {
     if (!Array.isArray(array)) return [];

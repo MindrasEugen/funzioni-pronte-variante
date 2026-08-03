@@ -1,9 +1,10 @@
 /**
  * Truncates a string to a maximum number of characters.
+ * Tronca una stringa a un numero massimo di caratteri.
  * 
- * @param {string} text - The string to truncate
- * @param {number} max - The maximum number of characters
- * @returns {string} The truncated string
+ * @param {string} text - The string to truncate / La stringa da troncare
+ * @param {number} max - The maximum number of characters / Il numero massimo di caratteri
+ * @returns {string} The truncated string / La stringa tronca
  */
 function truncate(text, max) {
     if (typeof text !== 'string') return '';

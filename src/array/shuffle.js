@@ -1,8 +1,9 @@
 /**
  * Randomly shuffles the elements of an array (Fisher-Yates algorithm).
+ * Mescola casualmente gli elementi di un array (algoritmo Fisher-Yates).
  * 
- * @param {Array} array - The array to shuffle
- * @returns {Array} A new array with shuffled elements
+ * @param {Array} array - The array to shuffle / L'array da mescolare
+ * @returns {Array} A new array with shuffled elements / Un nuovo array con gli elementi mescolati
  */
 function shuffle(array) {
     if (!Array.isArray(array)) return [];

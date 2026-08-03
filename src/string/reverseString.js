@@ -1,8 +1,9 @@
 /**
  * Reverses a string.
+ * Inverte una stringa.
  * 
- * @param {string} text - The string to reverse
- * @returns {string} The reversed string
+ * @param {string} text - The string to reverse / La stringa da invertire
+ * @returns {string} The reversed string / La stringa invertita
  */
 function reverseString(text) {
     if (typeof text !== 'string') return '';

@@ -1,5 +1,6 @@
 /**
  * Math Functions - Mathematical operations
+ * Funzioni Matematiche - Operazioni matematiche
  */
 
 export { calculateAverage } from './calculateAverage.js';
