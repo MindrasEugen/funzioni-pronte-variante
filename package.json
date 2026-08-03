@@ -1,0 +1,92 @@
+{
+  "type": "module",
+  "name": "funzioni-salvate",
+  "version": "1.0.0",
+  "description": "Mini libreria di funzioni utility JavaScript per sviluppo web moderno. Include funzioni DOM, matematiche, array, stringhe e utility generiche.",
+  "main": "dist/funzioni-salvate.js",
+  "module": "dist/funzioni-salvate.esm.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/funzioni-salvate.js",
+      "import": "./dist/funzioni-salvate.esm.js"
+    },
+    "./dom": {
+      "require": "./dist/dom/index.js",
+      "import": "./dist/dom/index.esm.js"
+    },
+    "./math": {
+      "require": "./dist/math/index.js",
+      "import": "./dist/math/index.esm.js"
+    },
+    "./array": {
+      "require": "./dist/array/index.js",
+      "import": "./dist/array/index.esm.js"
+    },
+    "./string": {
+      "require": "./dist/string/index.js",
+      "import": "./dist/string/index.esm.js"
+    },
+    "./utility": {
+      "require": "./dist/utility/index.js",
+      "import": "./dist/utility/index.esm.js"
+    },
+    "./shortcuts": {
+      "require": "./dist/shortcuts/index.js",
+      "import": "./dist/shortcuts/index.esm.js"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build && npm run build:types",
+    "dev": "npm run build -- --watch",
+    "lint": "echo \"Linting...\""
+  },
+  "keywords": [
+    "utility",
+    "javascript",
+    "dom",
+    "math",
+    "array",
+    "string",
+    "helper",
+    "functions",
+    "libreria",
+    "italiano"
+  ],
+  "author": "MindrasEugen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MindrasEugen/funzioni-salvate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MindrasEugen/funzioni-salvate/issues"
+  },
+  "homepage": "https://github.com/MindrasEugen/funzioni-salvate#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "jsdom": "^23.0.0",
+    "rollup": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+src/
+demo/
+tests/
+.github/
+rollup.config.js
+tsconfig.json
+.vscode/
+.gitignore
+README.md
+LICENSE
