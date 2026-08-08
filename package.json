@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@mindraseugen/utility-kit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A lightweight JavaScript utility library for modern web development. Includes DOM manipulation, math operations, array utilities, string helpers, and general purpose functions. / Una libreria utility JavaScript leggera per lo sviluppo web moderno. Include manipolazione DOM, operazioni matematiche, utilità per array, helper per stringhe e funzioni di uso generale.",
   "main": "dist/utility-kit.js",
   "module": "dist/utility-kit.esm.js",
