@@ -11,7 +11,22 @@ import {
   factorial,
   power,
   nthRoot,
-  isInRange
+  isInRange,
+  clamp,
+  randomFloat,
+  toDegrees,
+  toRadians,
+  median,
+  mode,
+  standardDeviation,
+  gcd,
+  lcm,
+  isEven,
+  isOdd,
+  toFixed,
+  modulo,
+  abs,
+  ceil
 } from '../src/math/index.js';
 
 describe('Math Functions', () => {
@@ -216,6 +231,255 @@ describe('Math Functions', () => {
     it('should work with decimal numbers', () => {
       expect(isInRange(5.5, 1, 10)).toBe(true);
       expect(isInRange(10.1, 1, 10)).toBe(false);
+    });
+  });
+
+  describe('clamp', () => {
+    it('should clamp value within min and max', () => {
+      expect(clamp(5, 1, 10)).toBe(5);
+      expect(clamp(0, 1, 10)).toBe(1);
+      expect(clamp(15, 1, 10)).toBe(10);
+    });
+
+    it('should work with negative numbers', () => {
+      expect(clamp(-5, -10, -1)).toBe(-5);
+      expect(clamp(-15, -10, -1)).toBe(-10);
+      expect(clamp(0, -10, -1)).toBe(-1);
+    });
+  });
+
+  describe('randomFloat', () => {
+    it('should return a number between min and max', () => {
+      const result = randomFloat(1, 5);
+      expect(result).toBeGreaterThanOrEqual(1);
+      expect(result).toBeLessThan(5);
+    });
+
+    it('should work with negative ranges', () => {
+      const result = randomFloat(-5, -1);
+      expect(result).toBeGreaterThanOrEqual(-5);
+      expect(result).toBeLessThan(-1);
+    });
+  });
+
+  describe('toDegrees', () => {
+    it('should convert 0 radians to 0 degrees', () => {
+      expect(toDegrees(0)).toBe(0);
+    });
+
+    it('should convert PI radians to 180 degrees', () => {
+      expect(toDegrees(Math.PI)).toBe(180);
+    });
+
+    it('should convert PI/2 radians to 90 degrees', () => {
+      expect(toDegrees(Math.PI / 2)).toBe(90);
+    });
+  });
+
+  describe('toRadians', () => {
+    it('should convert 0 degrees to 0 radians', () => {
+      expect(toRadians(0)).toBe(0);
+    });
+
+    it('should convert 180 degrees to PI radians', () => {
+      expect(toRadians(180)).toBe(Math.PI);
+    });
+
+    it('should convert 90 degrees to PI/2 radians', () => {
+      expect(toRadians(90)).toBe(Math.PI / 2);
+    });
+  });
+
+  describe('median', () => {
+    it('should calculate median of odd-length array', () => {
+      expect(median([1, 3, 5])).toBe(3);
+    });
+
+    it('should calculate median of even-length array', () => {
+      expect(median([1, 3, 5, 7])).toBe(4);
+    });
+
+    it('should return NaN for empty array', () => {
+      expect(median([])).toBeNaN();
+    });
+
+    it('should return NaN for non-array input', () => {
+      expect(median(null)).toBeNaN();
+    });
+  });
+
+  describe('mode', () => {
+    it('should find the most frequent number', () => {
+      expect(mode([1, 2, 2, 3, 4])).toBe(2);
+    });
+
+    it('should return first mode if multiple', () => {
+      expect(mode([1, 1, 2, 2, 3])).toBe(1);
+    });
+
+    it('should return NaN for empty array', () => {
+      expect(mode([])).toBeNaN();
+    });
+
+    it('should return NaN for non-array input', () => {
+      expect(mode(null)).toBeNaN();
+    });
+  });
+
+  describe('standardDeviation', () => {
+    it('should calculate standard deviation', () => {
+      const data = [2, 4, 4, 4, 5, 5, 7, 9];
+      const result = standardDeviation(data);
+      expect(result).toBeCloseTo(2);
+    });
+
+    it('should return NaN for empty array', () => {
+      expect(standardDeviation([])).toBeNaN();
+    });
+
+    it('should return NaN for non-array input', () => {
+      expect(standardDeviation(null)).toBeNaN();
+    });
+
+    it('should return 0 for array with identical values', () => {
+      expect(standardDeviation([5, 5, 5, 5])).toBe(0);
+    });
+  });
+
+  describe('gcd', () => {
+    it('should calculate GCD of two numbers', () => {
+      expect(gcd(48, 18)).toBe(6);
+      expect(gcd(17, 5)).toBe(1);
+    });
+
+    it('should work with negative numbers', () => {
+      expect(gcd(-48, 18)).toBe(6);
+      expect(gcd(48, -18)).toBe(6);
+    });
+
+    it('should return 0 for gcd(0, n)', () => {
+      expect(gcd(0, 5)).toBe(5);
+      expect(gcd(0, 0)).toBe(0);
+    });
+  });
+
+  describe('lcm', () => {
+    it('should calculate LCM of two numbers', () => {
+      expect(lcm(4, 6)).toBe(12);
+      expect(lcm(5, 7)).toBe(35);
+    });
+
+    it('should return 0 for lcm(0, n)', () => {
+      expect(lcm(0, 5)).toBe(0);
+    });
+
+    it('should work with negative numbers', () => {
+      expect(lcm(-4, 6)).toBe(12);
+    });
+  });
+
+  describe('isEven', () => {
+    it('should return true for even numbers', () => {
+      expect(isEven(2)).toBe(true);
+      expect(isEven(0)).toBe(true);
+      expect(isEven(-4)).toBe(true);
+    });
+
+    it('should return false for odd numbers', () => {
+      expect(isEven(1)).toBe(false);
+      expect(isEven(3)).toBe(false);
+      expect(isEven(-3)).toBe(false);
+    });
+
+    it('should return false for non-integers', () => {
+      expect(isEven(2.5)).toBe(false);
+      expect(isEven(NaN)).toBe(false);
+      expect(isEven(Infinity)).toBe(false);
+    });
+  });
+
+  describe('isOdd', () => {
+    it('should return true for odd numbers', () => {
+      expect(isOdd(1)).toBe(true);
+      expect(isOdd(3)).toBe(true);
+      expect(isOdd(-3)).toBe(true);
+    });
+
+    it('should return false for even numbers', () => {
+      expect(isOdd(2)).toBe(false);
+      expect(isOdd(0)).toBe(false);
+      expect(isOdd(-4)).toBe(false);
+    });
+
+    it('should return false for non-integers', () => {
+      expect(isOdd(2.5)).toBe(false);
+      expect(isOdd(NaN)).toBe(false);
+      expect(isOdd(Infinity)).toBe(false);
+    });
+  });
+
+  describe('toFixed', () => {
+    it('should round to 0 decimals by default', () => {
+      expect(toFixed(10.5)).toBe(11);
+      expect(toFixed(10.4)).toBe(10);
+    });
+
+    it('should round to specified decimals', () => {
+      expect(toFixed(10.1234, 2)).toBe(10.12);
+      expect(toFixed(10.1234, 3)).toBe(10.123);
+    });
+
+    it('should work with negative numbers', () => {
+      expect(toFixed(-10.5)).toBe(-10);
+      expect(toFixed(-10.1234, 2)).toBe(-10.12);
+    });
+  });
+
+  describe('modulo', () => {
+    it('should return positive modulo', () => {
+      expect(modulo(7, 3)).toBe(1);
+      expect(modulo(10, 3)).toBe(1);
+    });
+
+    it('should handle negative numbers correctly', () => {
+      expect(modulo(-7, 3)).toBe(2);
+      expect(modulo(7, -3)).toBe(1);
+      expect(modulo(-7, -3)).toBe(2);
+    });
+
+    it('should return 0 when divisible', () => {
+      expect(modulo(9, 3)).toBe(0);
+    });
+  });
+
+  describe('abs', () => {
+    it('should return absolute value of positive number', () => {
+      expect(abs(5)).toBe(5);
+    });
+
+    it('should return absolute value of negative number', () => {
+      expect(abs(-5)).toBe(5);
+    });
+
+    it('should return 0 for 0', () => {
+      expect(abs(0)).toBe(0);
+    });
+  });
+
+  describe('ceil', () => {
+    it('should round up positive numbers', () => {
+      expect(ceil(10.3)).toBe(11);
+      expect(ceil(10.9)).toBe(11);
+    });
+
+    it('should round up negative numbers', () => {
+      expect(ceil(-10.3)).toBe(-10);
+      expect(ceil(-10.9)).toBe(-10);
+    });
+
+    it('should handle integers', () => {
+      expect(ceil(10)).toBe(10);
+      expect(ceil(-10)).toBe(-10);
     });
   });
 });

@@ -5,7 +5,25 @@ import {
   capitalize,
   truncate,
   includesText,
-  replaceText
+  replaceText,
+  camelCase,
+  snakeCase,
+  kebabCase,
+  pascalCase,
+  trimStart,
+  trimEnd,
+  repeat,
+  words,
+  startsWith,
+  endsWith,
+  padStart,
+  padEnd,
+  toLower,
+  toUpper,
+  trim,
+  split,
+  join,
+  slice
 } from '../src/string/index.js';
 
 describe('String Functions', () => {
@@ -120,6 +138,294 @@ describe('String Functions', () => {
 
     it('should return empty string for non-string input', () => {
       expect(replaceText(null, 'a', 'b')).toBe('');
+    });
+  });
+
+  describe('camelCase', () => {
+    it('should convert string to camelCase', () => {
+      expect(camelCase('hello_world')).toBe('helloWorld');
+      expect(camelCase('Hello World')).toBe('helloWorld');
+      expect(camelCase('foo-bar')).toBe('fooBar');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(camelCase(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(camelCase('')).toBe('');
+    });
+  });
+
+  describe('snakeCase', () => {
+    it('should convert string to snake_case', () => {
+      expect(snakeCase('helloWorld')).toBe('hello_world');
+      expect(snakeCase('Hello World')).toBe('hello_world');
+      expect(snakeCase('foo-bar')).toBe('foo_bar');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(snakeCase(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(snakeCase('')).toBe('');
+    });
+  });
+
+  describe('kebabCase', () => {
+    it('should convert string to kebab-case', () => {
+      expect(kebabCase('helloWorld')).toBe('hello-world');
+      expect(kebabCase('Hello World')).toBe('hello-world');
+      expect(kebabCase('foo_bar')).toBe('foo-bar');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(kebabCase(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(kebabCase('')).toBe('');
+    });
+  });
+
+  describe('pascalCase', () => {
+    it('should convert string to PascalCase', () => {
+      expect(pascalCase('hello_world')).toBe('HelloWorld');
+      expect(pascalCase('hello world')).toBe('HelloWorld');
+      expect(pascalCase('foo-bar')).toBe('FooBar');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(pascalCase(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(pascalCase('')).toBe('');
+    });
+  });
+
+  describe('trimStart', () => {
+    it('should remove whitespace from the beginning', () => {
+      expect(trimStart('  hello')).toBe('hello');
+      expect(trimStart('\t\nhello')).toBe('hello');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(trimStart(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(trimStart('')).toBe('');
+    });
+  });
+
+  describe('trimEnd', () => {
+    it('should remove whitespace from the end', () => {
+      expect(trimEnd('hello  ')).toBe('hello');
+      expect(trimEnd('hello\t\n')).toBe('hello');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(trimEnd(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(trimEnd('')).toBe('');
+    });
+  });
+
+  describe('repeat', () => {
+    it('should repeat string n times', () => {
+      expect(repeat('a', 3)).toBe('aaa');
+      expect(repeat('hello', 2)).toBe('hellohello');
+    });
+
+    it('should return empty string for n <= 0', () => {
+      expect(repeat('a', 0)).toBe('');
+      expect(repeat('a', -1)).toBe('');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(repeat(null, 3)).toBe('');
+    });
+  });
+
+  describe('words', () => {
+    it('should split string into words', () => {
+      expect(words('hello world')).toEqual(['hello', 'world']);
+      expect(words('foo bar baz')).toEqual(['foo', 'bar', 'baz']);
+    });
+
+    it('should return empty array for non-string input', () => {
+      expect(words(null)).toEqual([]);
+    });
+
+    it('should handle empty string', () => {
+      expect(words('')).toEqual([]);
+    });
+
+    it('should handle multiple spaces', () => {
+      expect(words('hello   world')).toEqual(['hello', 'world']);
+    });
+  });
+
+  describe('startsWith', () => {
+    it('should return true if string starts with substring', () => {
+      expect(startsWith('hello world', 'hello')).toBe(true);
+    });
+
+    it('should return false if string does not start with substring', () => {
+      expect(startsWith('hello world', 'world')).toBe(false);
+    });
+
+    it('should respect position parameter', () => {
+      expect(startsWith('hello world', 'world', 6)).toBe(true);
+    });
+
+    it('should return false for non-string inputs', () => {
+      expect(startsWith(null, 'hello')).toBe(false);
+      expect(startsWith('hello', null)).toBe(false);
+    });
+  });
+
+  describe('endsWith', () => {
+    it('should return true if string ends with substring', () => {
+      expect(endsWith('hello world', 'world')).toBe(true);
+    });
+
+    it('should return false if string does not end with substring', () => {
+      expect(endsWith('hello world', 'hello')).toBe(false);
+    });
+
+    it('should respect length parameter', () => {
+      expect(endsWith('hello world', 'hello', 5)).toBe(true);
+    });
+
+    it('should return false for non-string inputs', () => {
+      expect(endsWith(null, 'world')).toBe(false);
+      expect(endsWith('world', null)).toBe(false);
+    });
+  });
+
+  describe('padStart', () => {
+    it('should pad string at start', () => {
+      expect(padStart('hello', 10)).toBe('     hello');
+      expect(padStart('hello', 10, '-')).toBe('-----hello');
+    });
+
+    it('should return original string if already long enough', () => {
+      expect(padStart('hello', 3)).toBe('hello');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(padStart(null, 10)).toBe('');
+    });
+  });
+
+  describe('padEnd', () => {
+    it('should pad string at end', () => {
+      expect(padEnd('hello', 10)).toBe('hello     ');
+      expect(padEnd('hello', 10, '-')).toBe('hello-----');
+    });
+
+    it('should return original string if already long enough', () => {
+      expect(padEnd('hello', 3)).toBe('hello');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(padEnd(null, 10)).toBe('');
+    });
+  });
+
+  describe('toLower', () => {
+    it('should convert string to lowercase', () => {
+      expect(toLower('HELLO')).toBe('hello');
+      expect(toLower('Hello World')).toBe('hello world');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(toLower(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(toLower('')).toBe('');
+    });
+  });
+
+  describe('toUpper', () => {
+    it('should convert string to uppercase', () => {
+      expect(toUpper('hello')).toBe('HELLO');
+      expect(toUpper('Hello World')).toBe('HELLO WORLD');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(toUpper(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(toUpper('')).toBe('');
+    });
+  });
+
+  describe('trim', () => {
+    it('should remove whitespace from both ends', () => {
+      expect(trim('  hello  ')).toBe('hello');
+      expect(trim('\t\nhello\t\n')).toBe('hello');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(trim(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(trim('')).toBe('');
+    });
+  });
+
+  describe('split', () => {
+    it('should split string by separator', () => {
+      expect(split('hello world', ' ')).toEqual(['hello', 'world']);
+      expect(split('a,b,c', ',')).toEqual(['a', 'b', 'c']);
+    });
+
+    it('should return empty array for non-string input', () => {
+      expect(split(null, ' ')).toEqual([]);
+    });
+
+    it('should handle limit parameter', () => {
+      expect(split('a,b,c,d', ',', 2)).toEqual(['a', 'b']);
+    });
+  });
+
+  describe('join', () => {
+    it('should join array elements with separator', () => {
+      expect(join(['a', 'b', 'c'], '-')).toBe('a-b-c');
+      expect(join(['hello', 'world'])).toBe('hello,world');
+    });
+
+    it('should return empty string for non-array input', () => {
+      expect(join(null)).toBe('');
+    });
+
+    it('should handle empty array', () => {
+      expect(join([], '-')).toBe('');
+    });
+  });
+
+  describe('slice', () => {
+    it('should extract section of string', () => {
+      expect(slice('hello world', 0, 5)).toBe('hello');
+      expect(slice('hello world', 6)).toBe('world');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(slice(null, 0, 5)).toBe('');
+    });
+
+    it('should handle negative indices', () => {
+      expect(slice('hello', -3)).toBe('llo');
+      expect(slice('hello', 0, -2)).toBe('hel');
     });
   });
 });

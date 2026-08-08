@@ -37,14 +37,14 @@
     }
   },
   "scripts": {
-    "build": "rollup -c", // Build the project / Costruisce il progetto
-    "build:types": "tsc --emitDeclarationOnly", // Build TypeScript definitions / Costruisce le definizioni TypeScript
-    "test": "vitest run", // Run all tests / Esegui tutti i test
-    "test:watch": "vitest", // Run tests in watch mode / Esegui test in modalità watch
-    "test:coverage": "vitest run --coverage", // Run tests with coverage / Esegui test con coverage
-    "prepublishOnly": "npm run build && npm run build:types", // Pre-publish build / Build pre-pubblicazione
-    "dev": "npm run build -- --watch", // Build in watch mode / Build in modalità watch
-    "lint": "echo \"Linting...\"" // Lint code / Analisi statica del codice
+    "build": "rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build && npm run build:types",
+    "dev": "npm run build -- --watch",
+    "lint": "echo \"Linting...\""
   },
   "keywords": [
     "utility",
