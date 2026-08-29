@@ -1,13 +1,13 @@
 # Utility Kit
 
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/@mindraseugen/utility-kit)
+[![npm version](https://img.shields.io/badge/npm-v1.2.0-blue.svg)](https://www.npmjs.com/package/@mindraseugen/utility-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests: 339 passed](https://img.shields.io/badge/Tests-339%20passed-brightgreen.svg)](https://github.com/MindrasEugen/utility-kit/actions)
+[![Tests: 552 passed](https://img.shields.io/badge/Tests-552%20passed-brightgreen.svg)](https://github.com/MindrasEugen/utility-kit/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Supported-3178c6.svg)](https://www.typescriptlang.org/)
 
 **A lightweight JavaScript utility library for modern web development.**
 
-A collection of **100 ready-to-use, categorized, and well-tested functions** to speed up your web application development.
+A collection of **150 ready-to-use, categorized, and well-tested functions** to speed up your web application development.
 
 ## 🚀 Installation
 
@@ -31,16 +31,18 @@ uk.calculateAverage([10, 20, 30]);
 ### Category-based Import (Tree-shaking optimized)
 ```javascript
 import { randomBgColor, createEl, on, fadeIn, removeEl, toggleClass, hasClass, addClass, removeClass, getStyle, setStyle, scrollTo } from '@mindraseugen/utility-kit/dom';
-import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange, clamp, randomFloat, toDegrees, toRadians, median, mode, standardDeviation, gcd, lcm, isEven, isOdd, toFixed, modulo, abs, ceil } from '@mindraseugen/utility-kit/math';
-import { filterArray, sortArray, unique, shuffle, chunk, flatten, groupBy, keyBy, difference, intersection, union, without, first, last, tail, take, drop, compact, fill, range, concat, indexOf, lastIndexOf } from '@mindraseugen/utility-kit/array';
-import { reverseString, countChars, capitalize, truncate, includesText, replaceText, camelCase, snakeCase, kebabCase, pascalCase, trimStart, trimEnd, repeat, words, startsWith, endsWith, padStart, padEnd, toLower, toUpper, trim, split, join, slice } from '@mindraseugen/utility-kit/string';
-import { logColor, getType, generateId, randomInt, debounce, throttle, once, memoize, deepClone, deepEqual, isEmpty, isNull, isUndefined, sleep } from '@mindraseugen/utility-kit/utils';
+import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange, clamp, randomFloat, toDegrees, toRadians, median, mode, standardDeviation, gcd, lcm, isEven, isOdd, toFixed, modulo, abs, ceil, lerp, mapRange, roundToNearest, isMultipleOf, sign, weightedRandom, percentageChange } from '@mindraseugen/utility-kit/math';
+import { filterArray, sortArray, unique, shuffle, chunk, flatten, groupBy, keyBy, difference, intersection, union, without, first, last, tail, take, drop, compact, fill, range, concat, indexOf, lastIndexOf, sample, sampleSize, partition, zip, rotate, move, countBy, sumBy } from '@mindraseugen/utility-kit/array';
+import { reverseString, countChars, capitalize, truncate, includesText, replaceText, camelCase, snakeCase, kebabCase, pascalCase, trimStart, trimEnd, repeat, words, startsWith, endsWith, padStart, padEnd, toLower, toUpper, trim, split, join, slice, escapeHtml, unescapeHtml, stripHtml, isEmail, isURL, maskString, wordCount, ellipsis } from '@mindraseugen/utility-kit/string';
+import { logColor, getType, generateId, randomInt, debounce, throttle, once, memoize, deepClone, deepEqual, isEmpty, isNull, isUndefined, sleep, uuid, isFunction, isArray, isObject, isString, isNumber, isBoolean } from '@mindraseugen/utility-kit/utils';
 import { select } from '@mindraseugen/utility-kit/shortcuts';
+import { pick, omit, merge, deepMerge, mapValues, invert, getPath, setPath, hasPath, isPlainObject } from '@mindraseugen/utility-kit/object';
+import { formatDate, addDays, subDays, addMonths, diffInDays, isToday, isWeekend, startOfDay, endOfDay, daysInMonth } from '@mindraseugen/utility-kit/date';
 ```
 
 ### CDN (for browser)
 ```html
-<script src="https://unpkg.com/@mindraseugen/utility-kit@1.0.0/dist/utility-kit.min.js"></script>
+<script src="https://unpkg.com/@mindraseugen/utility-kit@1.2.0/dist/utility-kit.min.js"></script>
 <script>
   UtilityKit.randomBgColor(document.body);
 </script>
@@ -51,11 +53,13 @@ import { select } from '@mindraseugen/utility-kit/shortcuts';
 | Category | Functions | Description |
 |-----------|----------|-------------|
 | **DOM** | `randomBgColor`, `createEl`, `on`, `fadeIn`, `removeEl`, `toggleClass`, `hasClass`, `addClass`, `removeClass`, `getStyle`, `setStyle`, `scrollTo` | DOM manipulation and animations |
-| **Math** | `calculateAverage`, `sum`, `findMax`, `findMin`, `round`, `calculatePercentage`, `isPrime`, `calculateHypotenuse`, `factorial`, `power`, `nthRoot`, `isInRange`, `clamp`, `randomFloat`, `toDegrees`, `toRadians`, `median`, `mode`, `standardDeviation`, `gcd`, `lcm`, `isEven`, `isOdd`, `toFixed`, `modulo`, `abs`, `ceil` | Mathematical operations |
-| **Array** | `filterArray`, `sortArray`, `unique`, `shuffle`, `chunk`, `flatten`, `groupBy`, `keyBy`, `difference`, `intersection`, `union`, `without`, `first`, `last`, `tail`, `take`, `drop`, `compact`, `fill`, `range`, `concat`, `indexOf`, `lastIndexOf` | Array manipulation |
-| **String** | `reverseString`, `countChars`, `capitalize`, `truncate`, `includesText`, `replaceText`, `camelCase`, `snakeCase`, `kebabCase`, `pascalCase`, `trimStart`, `trimEnd`, `repeat`, `words`, `startsWith`, `endsWith`, `padStart`, `padEnd`, `toLower`, `toUpper`, `trim`, `split`, `join`, `slice` | String manipulation |
-| **Utils** | `logColor`, `getType`, `generateId`, `randomInt`, `debounce`, `throttle`, `once`, `memoize`, `deepClone`, `deepEqual`, `isEmpty`, `isNull`, `isUndefined`, `sleep` | General utilities |
+| **Math** | `calculateAverage`, `sum`, `findMax`, `findMin`, `round`, `calculatePercentage`, `isPrime`, `calculateHypotenuse`, `factorial`, `power`, `nthRoot`, `isInRange`, `clamp`, `randomFloat`, `toDegrees`, `toRadians`, `median`, `mode`, `standardDeviation`, `gcd`, `lcm`, `isEven`, `isOdd`, `toFixed`, `modulo`, `abs`, `ceil`, `lerp`, `mapRange`, `roundToNearest`, `isMultipleOf`, `sign`, `weightedRandom`, `percentageChange` | Mathematical operations |
+| **Array** | `filterArray`, `sortArray`, `unique`, `shuffle`, `chunk`, `flatten`, `groupBy`, `keyBy`, `difference`, `intersection`, `union`, `without`, `first`, `last`, `tail`, `take`, `drop`, `compact`, `fill`, `range`, `concat`, `indexOf`, `lastIndexOf`, `sample`, `sampleSize`, `partition`, `zip`, `rotate`, `move`, `countBy`, `sumBy` | Array manipulation |
+| **String** | `reverseString`, `countChars`, `capitalize`, `truncate`, `includesText`, `replaceText`, `camelCase`, `snakeCase`, `kebabCase`, `pascalCase`, `trimStart`, `trimEnd`, `repeat`, `words`, `startsWith`, `endsWith`, `padStart`, `padEnd`, `toLower`, `toUpper`, `trim`, `split`, `join`, `slice`, `escapeHtml`, `unescapeHtml`, `stripHtml`, `isEmail`, `isURL`, `maskString`, `wordCount`, `ellipsis` | String manipulation |
+| **Utils** | `logColor`, `getType`, `generateId`, `randomInt`, `debounce`, `throttle`, `once`, `memoize`, `deepClone`, `deepEqual`, `isEmpty`, `isNull`, `isUndefined`, `sleep`, `uuid`, `isFunction`, `isArray`, `isObject`, `isString`, `isNumber`, `isBoolean` | General utilities |
 | **Shortcuts** | `select` | DOM element selection |
+| **Object** | `pick`, `omit`, `merge`, `deepMerge`, `mapValues`, `invert`, `getPath`, `setPath`, `hasPath`, `isPlainObject` | Object manipulation |
+| **Date** | `formatDate`, `addDays`, `subDays`, `addMonths`, `diffInDays`, `isToday`, `isWeekend`, `startOfDay`, `endOfDay`, `daysInMonth` | Date utilities |
 
 ## 🎯 Usage Examples
 
@@ -104,6 +108,8 @@ utility-kit/
 │   ├── string/                   # String Functions
 │   ├── utils/                     # Utility Functions
 │   ├── shortcuts/                # Shortcuts
+│   ├── object/                   # Object Functions
+│   ├── date/                     # Date Functions
 │   └── index.js                  # Entry point
 ├── dist/                         # Build output
 ├── types/                       # TypeScript definitions
@@ -137,14 +143,14 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 # Utility Kit - Versione Italiana
 
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/@mindraseugen/utility-kit)
+[![npm version](https://img.shields.io/badge/npm-v1.2.0-blue.svg)](https://www.npmjs.com/package/@mindraseugen/utility-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests: 339 passed](https://img.shields.io/badge/Tests-339%20passed-brightgreen.svg)](https://github.com/MindrasEugen/utility-kit/actions)
+[![Tests: 552 passed](https://img.shields.io/badge/Tests-552%20passed-brightgreen.svg)](https://github.com/MindrasEugen/utility-kit/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Supported-3178c6.svg)](https://www.typescriptlang.org/)
 
 **Una libreria utility JavaScript leggera per lo sviluppo web moderno.**
 
-Una raccolta di **100 funzioni pronte all'uso, categorizzate e ben testate** per accelerare lo sviluppo della tua applicazione web.
+Una raccolta di **150 funzioni pronte all'uso, categorizzate e ben testate** per accelerare lo sviluppo della tua applicazione web.
 
 ## 🚀 Installazione
 
@@ -168,16 +174,18 @@ uk.calculateAverage([10, 20, 30]);
 ### Importazione basata su categorie (ottimizzato per tree-shaking)
 ```javascript
 import { randomBgColor, createEl, on, fadeIn, removeEl, toggleClass, hasClass, addClass, removeClass, getStyle, setStyle, scrollTo } from '@mindraseugen/utility-kit/dom';
-import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange, clamp, randomFloat, toDegrees, toRadians, median, mode, standardDeviation, gcd, lcm, isEven, isOdd, toFixed, modulo, abs, ceil } from '@mindraseugen/utility-kit/math';
-import { filterArray, sortArray, unique, shuffle, chunk, flatten, groupBy, keyBy, difference, intersection, union, without, first, last, tail, take, drop, compact, fill, range, concat, indexOf, lastIndexOf } from '@mindraseugen/utility-kit/array';
-import { reverseString, countChars, capitalize, truncate, includesText, replaceText, camelCase, snakeCase, kebabCase, pascalCase, trimStart, trimEnd, repeat, words, startsWith, endsWith, padStart, padEnd, toLower, toUpper, trim, split, join, slice } from '@mindraseugen/utility-kit/string';
-import { logColor, getType, generateId, randomInt, debounce, throttle, once, memoize, deepClone, deepEqual, isEmpty, isNull, isUndefined, sleep } from '@mindraseugen/utility-kit/utils';
+import { calculateAverage, sum, findMax, findMin, round, calculatePercentage, isPrime, calculateHypotenuse, factorial, power, nthRoot, isInRange, clamp, randomFloat, toDegrees, toRadians, median, mode, standardDeviation, gcd, lcm, isEven, isOdd, toFixed, modulo, abs, ceil, lerp, mapRange, roundToNearest, isMultipleOf, sign, weightedRandom, percentageChange } from '@mindraseugen/utility-kit/math';
+import { filterArray, sortArray, unique, shuffle, chunk, flatten, groupBy, keyBy, difference, intersection, union, without, first, last, tail, take, drop, compact, fill, range, concat, indexOf, lastIndexOf, sample, sampleSize, partition, zip, rotate, move, countBy, sumBy } from '@mindraseugen/utility-kit/array';
+import { reverseString, countChars, capitalize, truncate, includesText, replaceText, camelCase, snakeCase, kebabCase, pascalCase, trimStart, trimEnd, repeat, words, startsWith, endsWith, padStart, padEnd, toLower, toUpper, trim, split, join, slice, escapeHtml, unescapeHtml, stripHtml, isEmail, isURL, maskString, wordCount, ellipsis } from '@mindraseugen/utility-kit/string';
+import { logColor, getType, generateId, randomInt, debounce, throttle, once, memoize, deepClone, deepEqual, isEmpty, isNull, isUndefined, sleep, uuid, isFunction, isArray, isObject, isString, isNumber, isBoolean } from '@mindraseugen/utility-kit/utils';
 import { select } from '@mindraseugen/utility-kit/shortcuts';
+import { pick, omit, merge, deepMerge, mapValues, invert, getPath, setPath, hasPath, isPlainObject } from '@mindraseugen/utility-kit/object';
+import { formatDate, addDays, subDays, addMonths, diffInDays, isToday, isWeekend, startOfDay, endOfDay, daysInMonth } from '@mindraseugen/utility-kit/date';
 ```
 
 ### CDN (per browser)
 ```html
-<script src="https://unpkg.com/@mindraseugen/utility-kit@1.0.0/dist/utility-kit.min.js"></script>
+<script src="https://unpkg.com/@mindraseugen/utility-kit@1.2.0/dist/utility-kit.min.js"></script>
 <script>
   UtilityKit.randomBgColor(document.body);
 </script>
@@ -188,11 +196,13 @@ import { select } from '@mindraseugen/utility-kit/shortcuts';
 | Categoria | Funzioni | Descrizione |
 |-----------|----------|-------------|
 | **DOM** | `randomBgColor`, `createEl`, `on`, `fadeIn`, `removeEl`, `toggleClass`, `hasClass`, `addClass`, `removeClass`, `getStyle`, `setStyle`, `scrollTo` | Manipolazione DOM e animazioni |
-| **Math** | `calculateAverage`, `sum`, `findMax`, `findMin`, `round`, `calculatePercentage`, `isPrime`, `calculateHypotenuse`, `factorial`, `power`, `nthRoot`, `isInRange`, `clamp`, `randomFloat`, `toDegrees`, `toRadians`, `median`, `mode`, `standardDeviation`, `gcd`, `lcm`, `isEven`, `isOdd`, `toFixed`, `modulo`, `abs`, `ceil` | Operazioni matematiche |
-| **Array** | `filterArray`, `sortArray`, `unique`, `shuffle`, `chunk`, `flatten`, `groupBy`, `keyBy`, `difference`, `intersection`, `union`, `without`, `first`, `last`, `tail`, `take`, `drop`, `compact`, `fill`, `range`, `concat`, `indexOf`, `lastIndexOf` | Manipolazione array |
-| **String** | `reverseString`, `countChars`, `capitalize`, `truncate`, `includesText`, `replaceText`, `camelCase`, `snakeCase`, `kebabCase`, `pascalCase`, `trimStart`, `trimEnd`, `repeat`, `words`, `startsWith`, `endsWith`, `padStart`, `padEnd`, `toLower`, `toUpper`, `trim`, `split`, `join`, `slice` | Manipolazione stringhe |
-| **Utils** | `logColor`, `getType`, `generateId`, `randomInt`, `debounce`, `throttle`, `once`, `memoize`, `deepClone`, `deepEqual`, `isEmpty`, `isNull`, `isUndefined`, `sleep` | Utilità generiche |
+| **Math** | `calculateAverage`, `sum`, `findMax`, `findMin`, `round`, `calculatePercentage`, `isPrime`, `calculateHypotenuse`, `factorial`, `power`, `nthRoot`, `isInRange`, `clamp`, `randomFloat`, `toDegrees`, `toRadians`, `median`, `mode`, `standardDeviation`, `gcd`, `lcm`, `isEven`, `isOdd`, `toFixed`, `modulo`, `abs`, `ceil`, `lerp`, `mapRange`, `roundToNearest`, `isMultipleOf`, `sign`, `weightedRandom`, `percentageChange` | Operazioni matematiche |
+| **Array** | `filterArray`, `sortArray`, `unique`, `shuffle`, `chunk`, `flatten`, `groupBy`, `keyBy`, `difference`, `intersection`, `union`, `without`, `first`, `last`, `tail`, `take`, `drop`, `compact`, `fill`, `range`, `concat`, `indexOf`, `lastIndexOf`, `sample`, `sampleSize`, `partition`, `zip`, `rotate`, `move`, `countBy`, `sumBy` | Manipolazione array |
+| **String** | `reverseString`, `countChars`, `capitalize`, `truncate`, `includesText`, `replaceText`, `camelCase`, `snakeCase`, `kebabCase`, `pascalCase`, `trimStart`, `trimEnd`, `repeat`, `words`, `startsWith`, `endsWith`, `padStart`, `padEnd`, `toLower`, `toUpper`, `trim`, `split`, `join`, `slice`, `escapeHtml`, `unescapeHtml`, `stripHtml`, `isEmail`, `isURL`, `maskString`, `wordCount`, `ellipsis` | Manipolazione stringhe |
+| **Utils** | `logColor`, `getType`, `generateId`, `randomInt`, `debounce`, `throttle`, `once`, `memoize`, `deepClone`, `deepEqual`, `isEmpty`, `isNull`, `isUndefined`, `sleep`, `uuid`, `isFunction`, `isArray`, `isObject`, `isString`, `isNumber`, `isBoolean` | Utilità generiche |
 | **Shortcuts** | `select` | Selezione elementi DOM |
+| **Object** | `pick`, `omit`, `merge`, `deepMerge`, `mapValues`, `invert`, `getPath`, `setPath`, `hasPath`, `isPlainObject` | Manipolazione oggetti |
+| **Date** | `formatDate`, `addDays`, `subDays`, `addMonths`, `diffInDays`, `isToday`, `isWeekend`, `startOfDay`, `endOfDay`, `daysInMonth` | Utilità per le date |
 
 ## 🎯 Esempi di utilizzo
 
@@ -241,6 +251,8 @@ utility-kit/
 │   ├── string/                   # Funzioni Stringhe
 │   ├── utils/                     # Funzioni di Utilità
 │   ├── shortcuts/                # Scorciatoie
+│   ├── object/                   # Funzioni Oggetti
+│   ├── date/                     # Funzioni Data
 │   └── index.js                  # Punto di ingresso
 ├── dist/                         # Output della build
 ├── types/                       # Definizioni TypeScript
@@ -273,5 +285,5 @@ Licenza MIT - vedi [LICENSE](LICENSE) per i dettagli.
 ---
 
 **Author:** MindrasEugen
-**Version:** 1.0.0
-**Last updated:** 2026-08-08
+**Version:** 1.2.0
+**Last updated:** 2026-08-29

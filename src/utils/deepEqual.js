@@ -9,6 +9,8 @@
 function deepEqual(a, b) {
     if (a === b) return true;
     
+    if (Number.isNaN(a) && Number.isNaN(b)) return true;
+    
     if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) {
         return false;
     }

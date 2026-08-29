@@ -22,6 +22,22 @@ function deepClone(obj) {
         return new RegExp(obj);
     }
     
+    if (obj instanceof Map) {
+        const cloned = new Map();
+        obj.forEach((value, key) => {
+            cloned.set(deepClone(key), deepClone(value));
+        });
+        return cloned;
+    }
+    
+    if (obj instanceof Set) {
+        const cloned = new Set();
+        obj.forEach((value) => {
+            cloned.add(deepClone(value));
+        });
+        return cloned;
+    }
+    
     const cloned = {};
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {

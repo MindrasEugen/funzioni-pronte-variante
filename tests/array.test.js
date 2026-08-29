@@ -1,28 +1,36 @@
 import { describe, it, expect } from 'vitest';
 import { 
-  filterArray,
-  sortArray,
-  unique,
-  shuffle,
   chunk,
+  compact,
+  concat,
+  countBy,
+  difference,
+  drop,
+  fill,
+  filterArray,
+  first,
   flatten,
   groupBy,
-  keyBy,
-  difference,
+  indexOf,
   intersection,
-  union,
-  without,
-  first,
+  keyBy,
   last,
+  lastIndexOf,
+  move,
+  partition,
+  range,
+  rotate,
+  sample,
+  sampleSize,
+  shuffle,
+  sortArray,
+  sumBy,
   tail,
   take,
-  drop,
-  compact,
-  fill,
-  range,
-  concat,
-  indexOf,
-  lastIndexOf
+  unique,
+  union,
+  without,
+  zip
 } from '../src/array/index.js';
 
 describe('Array Functions', () => {
@@ -484,6 +492,208 @@ describe('Array Functions', () => {
 
     it('should return -1 for non-array input', () => {
       expect(lastIndexOf(null, 1)).toBe(-1);
+    });
+  });
+
+  describe('sample', () => {
+    it('should return random element from array', () => {
+      const array = [1, 2, 3, 4, 5];
+      const sampled = sample(array);
+      expect(array).toContain(sampled);
+    });
+
+    it('should return undefined for empty array', () => {
+      expect(sample([])).toBeUndefined();
+    });
+
+    it('should return undefined for non-array input', () => {
+      expect(sample(null)).toBeUndefined();
+    });
+
+    it('should handle array with one element', () => {
+      expect(sample([42])).toBe(42);
+    });
+  });
+
+  describe('sampleSize', () => {
+    it('should return n unique random elements', () => {
+      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const sampled = sampleSize(array, 5);
+      expect(sampled).toHaveLength(5);
+      expect(new Set(sampled).size).toBe(5);
+      expect(sampled.every(el => array.includes(el))).toBe(true);
+    });
+
+    it('should return empty array for n <= 0', () => {
+      expect(sampleSize([1, 2, 3], 0)).toEqual([]);
+      expect(sampleSize([1, 2, 3], -1)).toEqual([]);
+    });
+
+    it('should return empty array for non-array input', () => {
+      expect(sampleSize(null, 3)).toEqual([]);
+    });
+
+    it('should return all elements if n > array length', () => {
+      const array = [1, 2, 3];
+      const sampled = sampleSize(array, 10);
+      expect(sampled).toHaveLength(3);
+      expect(new Set(sampled).size).toBe(3);
+    });
+  });
+
+  describe('partition', () => {
+    it('should split array into matched and unmatched', () => {
+      const array = [1, 2, 3, 4, 5, 6];
+      const [matched, unmatched] = partition(array, x => x % 2 === 0);
+      expect(matched).toEqual([2, 4, 6]);
+      expect(unmatched).toEqual([1, 3, 5]);
+    });
+
+    it('should return two empty arrays for non-array input', () => {
+      expect(partition(null, x => x)).toEqual([[], []]);
+    });
+
+    it('should return two empty arrays for non-function predicate', () => {
+      expect(partition([1, 2, 3], null)).toEqual([[], []]);
+    });
+
+    it('should handle empty array', () => {
+      expect(partition([], x => x)).toEqual([[], []]);
+    });
+
+    it('should preserve all elements', () => {
+      const array = [1, 2, 3, 4, 5];
+      const [matched, unmatched] = partition(array, x => x > 2);
+      expect([...matched, ...unmatched].sort()).toEqual(array.sort());
+    });
+  });
+
+  describe('zip', () => {
+    it('should zip multiple arrays', () => {
+      expect(zip([1, 2], ['a', 'b'])).toEqual([[1, 'a'], [2, 'b']]);
+    });
+
+    it('should zip arrays of different lengths', () => {
+      expect(zip([1, 2, 3], ['a', 'b'])).toEqual([[1, 'a'], [2, 'b'], [3, undefined]]);
+    });
+
+    it('should handle single array', () => {
+      expect(zip([1, 2, 3])).toEqual([[1], [2], [3]]);
+    });
+
+    it('should handle no arrays', () => {
+      expect(zip()).toEqual([]);
+    });
+
+    it('should handle empty arrays', () => {
+      expect(zip([], [1, 2])).toEqual([[undefined, 1], [undefined, 2]]);
+    });
+  });
+
+  describe('rotate', () => {
+    it('should rotate array to the right', () => {
+      expect(rotate([1, 2, 3, 4, 5], 2)).toEqual([4, 5, 1, 2, 3]);
+    });
+
+    it('should rotate array to the left', () => {
+      expect(rotate([1, 2, 3, 4, 5], -2)).toEqual([3, 4, 5, 1, 2]);
+    });
+
+    it('should handle rotation larger than array length', () => {
+      expect(rotate([1, 2, 3], 5)).toEqual([2, 3, 1]);
+    });
+
+    it('should return empty array for non-array input', () => {
+      expect(rotate(null, 2)).toEqual([]);
+    });
+
+    it('should return empty array for empty array', () => {
+      expect(rotate([], 2)).toEqual([]);
+    });
+
+    it('should handle rotation of 0', () => {
+      const array = [1, 2, 3];
+      expect(rotate(array, 0)).toEqual([1, 2, 3]);
+    });
+  });
+
+  describe('move', () => {
+    it('should move element from one index to another', () => {
+      const array = [1, 2, 3, 4, 5];
+      expect(move(array, 2, 0)).toEqual([3, 1, 2, 4, 5]);
+    });
+
+    it('should move element to higher index', () => {
+      const array = [1, 2, 3, 4, 5];
+      expect(move(array, 0, 3)).toEqual([2, 3, 4, 1, 5]);
+    });
+
+    it('should return empty array for non-array input', () => {
+      expect(move(null, 0, 1)).toEqual([]);
+    });
+
+    it('should handle negative indices', () => {
+      const array = [1, 2, 3, 4, 5];
+      expect(move(array, -1, 0)).toEqual([5, 1, 2, 3, 4]);
+    });
+
+    it('should not mutate original array', () => {
+      const array = [1, 2, 3, 4, 5];
+      move(array, 2, 0);
+      expect(array).toEqual([1, 2, 3, 4, 5]);
+    });
+  });
+
+  describe('countBy', () => {
+    it('should count elements by category', () => {
+      const array = [6.1, 4.2, 6.3, 4.1, 6.4];
+      expect(countBy(array, Math.floor)).toEqual({ 4: 2, 6: 3 });
+    });
+
+    it('should return empty object for non-array input', () => {
+      expect(countBy(null, x => x)).toEqual({});
+    });
+
+    it('should return empty object for non-function', () => {
+      expect(countBy([1, 2, 3], null)).toEqual({});
+    });
+
+    it('should handle empty array', () => {
+      expect(countBy([], x => x)).toEqual({});
+    });
+
+    it('should work with string categorization', () => {
+      const array = ['apple', 'banana', 'apricot', 'blueberry'];
+      expect(countBy(array, word => word[0])).toEqual({ a: 2, b: 2 });
+    });
+  });
+
+  describe('sumBy', () => {
+    it('should sum transformed values', () => {
+      const array = [{ value: 1 }, { value: 2 }, { value: 3 }];
+      expect(sumBy(array, item => item.value)).toBe(6);
+    });
+
+    it('should return 0 for non-array input', () => {
+      expect(sumBy(null, x => x)).toBe(0);
+    });
+
+    it('should return 0 for non-function', () => {
+      expect(sumBy([1, 2, 3], null)).toBe(0);
+    });
+
+    it('should handle empty array', () => {
+      expect(sumBy([], x => x)).toBe(0);
+    });
+
+    it('should skip non-numeric results', () => {
+      const array = [{ v: 1 }, { v: null }, { v: 2 }];
+      expect(sumBy(array, item => item.v)).toBe(3);
+    });
+
+    it('should handle NaN values', () => {
+      const array = [{ v: 1 }, { v: NaN }, { v: 2 }];
+      expect(sumBy(array, item => item.v)).toBe(3);
     });
   });
 });

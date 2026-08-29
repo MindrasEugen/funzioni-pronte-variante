@@ -3,12 +3,11 @@
  * 
  * @param {HTMLElement|number} target - L'elemento DOM o la posizione in pixel (Y)
  * @param {Object} [options] - Opzioni per lo scroll
- * @param {number} [options.duration=1000] - Durata dello scroll in millisecondi
  * @param {boolean} [options.smooth=true] - Se lo scroll deve essere fluido
  * @returns {void}
  */
 function scrollTo(target, options = {}) {
-    const { duration = 1000, smooth = true } = options;
+    const { smooth = true } = options;
     
     if (typeof target === 'number') {
         // Scroll verso una posizione Y

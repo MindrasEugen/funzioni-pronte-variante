@@ -1,29 +1,37 @@
 import { describe, it, expect } from 'vitest';
 import { 
-  reverseString,
-  countChars,
   capitalize,
-  truncate,
-  includesText,
-  replaceText,
+  countChars,
   camelCase,
-  snakeCase,
-  kebabCase,
-  pascalCase,
-  trimStart,
-  trimEnd,
-  repeat,
-  words,
-  startsWith,
+  ellipsis,
+  escapeHtml,
   endsWith,
-  padStart,
+  includesText,
+  isEmail,
+  isURL,
+  join,
+  kebabCase,
+  maskString,
   padEnd,
+  padStart,
+  pascalCase,
+  repeat,
+  replaceText,
+  reverseString,
+  slice,
+  snakeCase,
+  split,
+  startsWith,
+  stripHtml,
   toLower,
   toUpper,
   trim,
-  split,
-  join,
-  slice
+  trimEnd,
+  trimStart,
+  truncate,
+  unescapeHtml,
+  wordCount,
+  words
 } from '../src/string/index.js';
 
 describe('String Functions', () => {
@@ -426,6 +434,193 @@ describe('String Functions', () => {
     it('should handle negative indices', () => {
       expect(slice('hello', -3)).toBe('llo');
       expect(slice('hello', 0, -2)).toBe('hel');
+    });
+  });
+
+  describe('escapeHtml', () => {
+    it('should escape & to &amp;', () => {
+      expect(escapeHtml('a & b')).toBe('a &amp; b');
+    });
+
+    it('should escape < to &lt;', () => {
+      expect(escapeHtml('a < b')).toBe('a &lt; b');
+    });
+
+    it('should escape > to &gt;', () => {
+      expect(escapeHtml('a > b')).toBe('a &gt; b');
+    });
+
+    it('should escape " to &quot;', () => {
+      expect(escapeHtml('say "hello"')).toBe('say &quot;hello&quot;');
+    });
+
+    it('should escape apostrophe to &#x27;', () => {
+      expect(escapeHtml("it's")).toBe("it&#x27;s");
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(escapeHtml(null)).toBe('');
+    });
+  });
+
+  describe('unescapeHtml', () => {
+    it('should unescape &amp; to &', () => {
+      expect(unescapeHtml('a &amp; b')).toBe('a & b');
+    });
+
+    it('should unescape &lt; to <', () => {
+      expect(unescapeHtml('a &lt; b')).toBe('a < b');
+    });
+
+    it('should unescape &gt; to >', () => {
+      expect(unescapeHtml('a &gt; b')).toBe('a > b');
+    });
+
+    it('should unescape &quot; to "', () => {
+      expect(unescapeHtml('say &quot;hello&quot;')).toBe('say "hello"');
+    });
+
+    it('should unescape &#x27; to apostrophe', () => {
+      expect(unescapeHtml("it&#x27;s")).toBe("it's");
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(unescapeHtml(null)).toBe('');
+    });
+  });
+
+  describe('stripHtml', () => {
+    it('should remove single HTML tag', () => {
+      expect(stripHtml('<p>hello</p>')).toBe('hello');
+    });
+
+    it('should remove multiple HTML tags', () => {
+      expect(stripHtml('<div><p>hello</p></div>')).toBe('hello');
+    });
+
+    it('should remove self-closing tags', () => {
+      expect(stripHtml('hello<br/>world')).toBe('helloworld');
+    });
+
+    it('should remove tags with attributes', () => {
+      expect(stripHtml('<a href="#">link</a>')).toBe('link');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(stripHtml(null)).toBe('');
+    });
+
+    it('should handle empty string', () => {
+      expect(stripHtml('')).toBe('');
+    });
+  });
+
+  describe('isEmail', () => {
+    it('should return true for valid email', () => {
+      expect(isEmail('test@example.com')).toBe(true);
+      expect(isEmail('user.name@example.co.uk')).toBe(true);
+      expect(isEmail('test123@example.com')).toBe(true);
+    });
+
+    it('should return false for invalid email', () => {
+      expect(isEmail('not an email')).toBe(false);
+      expect(isEmail('@example.com')).toBe(false);
+      expect(isEmail('test@.com')).toBe(false);
+      expect(isEmail('test@example')).toBe(false);
+    });
+
+    it('should return false for non-string input', () => {
+      expect(isEmail(null)).toBe(false);
+      expect(isEmail(123)).toBe(false);
+    });
+  });
+
+  describe('isURL', () => {
+    it('should return true for valid URL', () => {
+      expect(isURL('https://example.com')).toBe(true);
+      expect(isURL('http://localhost:3000')).toBe(true);
+      expect(isURL('ftp://example.com')).toBe(true);
+    });
+
+    it('should return false for invalid URL', () => {
+      expect(isURL('not a url')).toBe(false);
+      expect(isURL('example.com')).toBe(false);
+    });
+
+    it('should return false for non-string input', () => {
+      expect(isURL(null)).toBe(false);
+      expect(isURL(123)).toBe(false);
+    });
+  });
+
+  describe('maskString', () => {
+    it('should mask all but last 4 characters by default', () => {
+      expect(maskString('1234567890')).toBe('******7890');
+    });
+
+    it('should respect visibleChars parameter', () => {
+      expect(maskString('1234567890', 2)).toBe('********90');
+      expect(maskString('1234567890', 6)).toBe('****567890');
+    });
+
+    it('should use custom mask character', () => {
+      expect(maskString('abcdef', 2, '-')).toBe('----ef');
+    });
+
+    it('should return full string if shorter than visibleChars', () => {
+      expect(maskString('abc', 10)).toBe('abc');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(maskString(null)).toBe('');
+    });
+  });
+
+  describe('wordCount', () => {
+    it('should count words in a string', () => {
+      expect(wordCount('hello world')).toBe(2);
+      expect(wordCount('one two three')).toBe(3);
+    });
+
+    it('should return 0 for empty string', () => {
+      expect(wordCount('')).toBe(0);
+    });
+
+    it('should handle multiple spaces', () => {
+      expect(wordCount('hello   world')).toBe(2);
+    });
+
+    it('should return 0 for non-string input', () => {
+      expect(wordCount(null)).toBe(0);
+      expect(wordCount(123)).toBe(0);
+    });
+
+    it('should handle leading/trailing spaces', () => {
+      expect(wordCount('  hello world  ')).toBe(2);
+    });
+  });
+
+  describe('ellipsis', () => {
+    it('should truncate and add ellipsis', () => {
+      expect(ellipsis('hello world', 8)).toBe('hello...');
+    });
+
+    it('should return original string if shorter than maxLength', () => {
+      expect(ellipsis('hello', 10)).toBe('hello');
+    });
+
+    it('should handle maxLength less than ellipsis length', () => {
+      expect(ellipsis('hello world', 2)).toBe('..');
+      expect(ellipsis('hello world', 1)).toBe('.');
+    });
+
+    it('should return empty string if maxLength <= 0', () => {
+      expect(ellipsis('hello', 0)).toBe('');
+      expect(ellipsis('hello', -1)).toBe('');
+    });
+
+    it('should return empty string for non-string input', () => {
+      expect(ellipsis(null, 10)).toBe('');
     });
   });
 });

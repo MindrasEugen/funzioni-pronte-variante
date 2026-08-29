@@ -1,39 +1,47 @@
 {
   "type": "module",
   "name": "@mindraseugen/utility-kit",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A lightweight JavaScript utility library for modern web development. Includes DOM manipulation, math operations, array utilities, string helpers, and general purpose functions. / Una libreria utility JavaScript leggera per lo sviluppo web moderno. Include manipolazione DOM, operazioni matematiche, utilità per array, helper per stringhe e funzioni di uso generale.",
-  "main": "dist/utility-kit.js",
+  "main": "dist/utility-kit.cjs",
   "module": "dist/utility-kit.esm.js",
   "types": "types/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/utility-kit.js",
+      "require": "./dist/utility-kit.cjs",
       "import": "./dist/utility-kit.esm.js"
     },
     "./dom": {
-      "require": "./dist/dom/index.js",
+      "require": "./dist/dom/index.cjs",
       "import": "./dist/dom/index.esm.js"
     },
     "./math": {
-      "require": "./dist/math/index.js",
+      "require": "./dist/math/index.cjs",
       "import": "./dist/math/index.esm.js"
     },
     "./array": {
-      "require": "./dist/array/index.js",
+      "require": "./dist/array/index.cjs",
       "import": "./dist/array/index.esm.js"
     },
     "./string": {
-      "require": "./dist/string/index.js",
+      "require": "./dist/string/index.cjs",
       "import": "./dist/string/index.esm.js"
     },
     "./utils": {
-      "require": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs",
       "import": "./dist/utils/index.esm.js"
     },
     "./shortcuts": {
-      "require": "./dist/shortcuts/index.js",
+      "require": "./dist/shortcuts/index.cjs",
       "import": "./dist/shortcuts/index.esm.js"
+    },
+    "./object": {
+      "require": "./dist/object/index.cjs",
+      "import": "./dist/object/index.esm.js"
+    },
+    "./date": {
+      "require": "./dist/date/index.cjs",
+      "import": "./dist/date/index.esm.js"
     }
   },
   "scripts": {
@@ -44,7 +52,7 @@
     "test:coverage": "vitest run --coverage",
     "prepublishOnly": "npm run build && npm run build:types",
     "dev": "npm run build -- --watch",
-    "lint": "echo \"Linting...\""
+    "lint": "eslint src/**/*.js"
   },
   "keywords": [
     "utility",
@@ -73,24 +81,14 @@
   },
   "homepage": "https://github.com/MindrasEugen/utility-kit#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-terser": "^0.4.0",
+    "eslint": "^10.9.1",
     "jsdom": "^23.0.0",
     "rollup": "^4.0.0",
     "typescript": "^5.0.0",
     "vitest": "^1.0.0"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
   }
 }

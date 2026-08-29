@@ -4,17 +4,20 @@ import terser from '@rollup/plugin-terser';
 
 // Configuration for categorized builds
 // Configurazione per build categorizzati
-const categories = ['dom', 'math', 'array', 'string', 'utils', 'shortcuts'];
+const categories = ['dom', 'math', 'array', 'string', 'utils', 'shortcuts', 'object', 'date'];
 
-// Main builds (all together)
-// Build principali (tutti insieme)
+// CJS output files use the .cjs extension so Node treats them as CommonJS
+// regardless of the package's top-level "type": "module" — avoids the dual
+// package hazard instead of overriding the module type for the whole dist/ tree.
+// I file di output CJS usano l'estensione .cjs così Node li tratta come
+// CommonJS a prescindere dal "type": "module" del package.json principale.
 const mainBuilds = [
   // CommonJS build
   // Build CommonJS
   {
     input: 'src/index.js',
     output: {
-      file: 'dist/utility-kit.js',
+      file: 'dist/utility-kit.cjs',
       format: 'cjs',
       exports: 'named'
     },
@@ -59,7 +62,7 @@ const categoryBuilds = categories.flatMap(category => [
   {
     input: `src/${category}/index.js`,
     output: {
-      file: `dist/${category}/index.js`,
+      file: `dist/${category}/index.cjs`,
       format: 'cjs',
       exports: 'named'
     },

@@ -13,7 +13,14 @@ import {
   isEmpty,
   isNull,
   isUndefined,
-  sleep
+  sleep,
+  uuid,
+  isFunction,
+  isArray,
+  isObject,
+  isString,
+  isNumber,
+  isBoolean
 } from '../src/utils/index.js';
 
 describe('Utility Functions', () => {
@@ -403,6 +410,107 @@ describe('Utility Functions', () => {
       const end = Date.now();
       
       expect(end - start).toBeGreaterThanOrEqual(49);
+    });
+  });
+
+  describe('uuid', () => {
+    it('should generate a valid UUID v4', () => {
+      const id = uuid();
+      expect(id).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+    });
+
+    it('should generate unique values across calls', () => {
+      const a = uuid();
+      const b = uuid();
+      expect(a).not.toBe(b);
+    });
+  });
+
+  describe('isFunction', () => {
+    it('should return true for functions', () => {
+      expect(isFunction(() => {})).toBe(true);
+      expect(isFunction(function () {})).toBe(true);
+    });
+
+    it('should return false for non-functions', () => {
+      expect(isFunction({})).toBe(false);
+      expect(isFunction('function')).toBe(false);
+      expect(isFunction(null)).toBe(false);
+    });
+  });
+
+  describe('isArray', () => {
+    it('should return true for arrays', () => {
+      expect(isArray([1, 2, 3])).toBe(true);
+      expect(isArray([])).toBe(true);
+    });
+
+    it('should return false for non-arrays', () => {
+      expect(isArray({})).toBe(false);
+      expect(isArray('array')).toBe(false);
+      expect(isArray(null)).toBe(false);
+    });
+  });
+
+  describe('isObject', () => {
+    it('should return true for plain objects', () => {
+      expect(isObject({})).toBe(true);
+      expect(isObject({ a: 1 })).toBe(true);
+    });
+
+    it('should return false for arrays', () => {
+      expect(isObject([1, 2, 3])).toBe(false);
+    });
+
+    it('should return false for null', () => {
+      expect(isObject(null)).toBe(false);
+    });
+
+    it('should return false for primitives', () => {
+      expect(isObject('object')).toBe(false);
+      expect(isObject(42)).toBe(false);
+    });
+  });
+
+  describe('isString', () => {
+    it('should return true for strings', () => {
+      expect(isString('hello')).toBe(true);
+      expect(isString('')).toBe(true);
+    });
+
+    it('should return false for non-strings', () => {
+      expect(isString(42)).toBe(false);
+      expect(isString(null)).toBe(false);
+    });
+  });
+
+  describe('isNumber', () => {
+    it('should return true for numbers', () => {
+      expect(isNumber(42)).toBe(true);
+      expect(isNumber(-3.14)).toBe(true);
+      expect(isNumber(0)).toBe(true);
+    });
+
+    it('should return false for NaN', () => {
+      expect(isNumber(NaN)).toBe(false);
+    });
+
+    it('should return false for non-numbers', () => {
+      expect(isNumber('42')).toBe(false);
+      expect(isNumber(null)).toBe(false);
+    });
+  });
+
+  describe('isBoolean', () => {
+    it('should return true for booleans', () => {
+      expect(isBoolean(true)).toBe(true);
+      expect(isBoolean(false)).toBe(true);
+    });
+
+    it('should return false for non-booleans', () => {
+      expect(isBoolean(0)).toBe(false);
+      expect(isBoolean('true')).toBe(false);
+      expect(isBoolean(null)).toBe(false);
     });
   });
 });

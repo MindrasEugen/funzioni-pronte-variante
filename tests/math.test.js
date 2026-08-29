@@ -26,7 +26,14 @@ import {
   toFixed,
   modulo,
   abs,
-  ceil
+  ceil,
+  lerp,
+  mapRange,
+  roundToNearest,
+  isMultipleOf,
+  sign,
+  weightedRandom,
+  percentageChange
 } from '../src/math/index.js';
 
 describe('Math Functions', () => {
@@ -480,6 +487,104 @@ describe('Math Functions', () => {
     it('should handle integers', () => {
       expect(ceil(10)).toBe(10);
       expect(ceil(-10)).toBe(-10);
+    });
+  });
+
+  describe('lerp', () => {
+    it('should interpolate linearly between two values', () => {
+      expect(lerp(0, 10, 0.5)).toBe(5);
+    });
+
+    it('should return start when t is 0', () => {
+      expect(lerp(0, 10, 0)).toBe(0);
+    });
+
+    it('should return end when t is 1', () => {
+      expect(lerp(0, 10, 1)).toBe(10);
+    });
+  });
+
+  describe('mapRange', () => {
+    it('should map a value from one range to another', () => {
+      expect(mapRange(5, 0, 10, 0, 100)).toBe(50);
+    });
+
+    it('should map the input range minimum to the output range minimum', () => {
+      expect(mapRange(0, 0, 10, 0, 100)).toBe(0);
+    });
+  });
+
+  describe('roundToNearest', () => {
+    it('should round up to the nearest multiple', () => {
+      expect(roundToNearest(18, 5)).toBe(20);
+    });
+
+    it('should round down to the nearest multiple', () => {
+      expect(roundToNearest(17, 5)).toBe(15);
+    });
+
+    it('should handle negative numbers', () => {
+      expect(roundToNearest(-7, 5)).toBe(-5);
+    });
+  });
+
+  describe('isMultipleOf', () => {
+    it('should return true for exact multiples', () => {
+      expect(isMultipleOf(10, 5)).toBe(true);
+    });
+
+    it('should return false for non-multiples', () => {
+      expect(isMultipleOf(10, 3)).toBe(false);
+    });
+
+    it('should return false when divisor is 0', () => {
+      expect(isMultipleOf(10, 0)).toBe(false);
+    });
+  });
+
+  describe('sign', () => {
+    it('should return 1 for positive numbers', () => {
+      expect(sign(5)).toBe(1);
+    });
+
+    it('should return -1 for negative numbers', () => {
+      expect(sign(-5)).toBe(-1);
+    });
+
+    it('should return 0 for zero', () => {
+      expect(sign(0)).toBe(0);
+    });
+  });
+
+  describe('weightedRandom', () => {
+    it('should always pick the only item with non-zero weight', () => {
+      expect(weightedRandom(['a', 'b'], [1, 0])).toBe('a');
+    });
+
+    it('should return undefined for mismatched array lengths', () => {
+      expect(weightedRandom(['a', 'b'], [1])).toBeUndefined();
+    });
+
+    it('should return undefined for empty arrays', () => {
+      expect(weightedRandom([], [])).toBeUndefined();
+    });
+
+    it('should return the first item when all weights are 0', () => {
+      expect(weightedRandom(['a', 'b'], [0, 0])).toBe('a');
+    });
+  });
+
+  describe('percentageChange', () => {
+    it('should calculate a positive percentage increase', () => {
+      expect(percentageChange(50, 75)).toBe(50);
+    });
+
+    it('should calculate a negative percentage decrease', () => {
+      expect(percentageChange(50, 25)).toBe(-50);
+    });
+
+    it('should return 0 when oldValue is 0 instead of Infinity/NaN', () => {
+      expect(percentageChange(0, 50)).toBe(0);
     });
   });
 });
